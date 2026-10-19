@@ -54,3 +54,12 @@ Then open http://localhost:8000. Check the desktop/mobile layouts, Play Showreel
 - To update your published repository `rahjeh92/video-editor`, upload **all contents of this ZIP** to your existing repository root, with `index.html` at root. Commit, then wait for GitHub Pages deployment and hard-refresh the website (Ctrl+Shift+R).
 - Do not upload just the ZIP. No need to change your existing GitHub Pages Settings.
 - Video files on Drive still require visitor access. The local preview art will render independently of Drive permissions.
+
+## Update v7 — sound and long-form project naming
+
+- The navigation sound-effects toggle now starts as **SFX ON** on every page load. Visitors can switch it **OFF** from the header at any time. The switch supports mouse, touch, and keyboard.
+- **Important:** Browsers block audible Web Audio before a user gesture. Effects begin working on the first click, tap, or keyboard interaction. This is a browser security policy; the interface correctly shows SFX ON as the intended default.
+- Long-form YouTube projects are now labeled **EPISODE** rather than FILM; the section is named Storytelling. AI Films keep their film terminology.
+- Lake Natoma's **12.3 miles** refers to the route length, not video runtime. The card now says **Full episode** until its exact video duration can be verified. Route distance remains in the case-study description.
+
+Upload all extracted files (especially index.html) over the existing GitHub Pages repository at rahjeh92/video-editor and commit changes.
