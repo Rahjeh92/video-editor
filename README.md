@@ -1,45 +1,85 @@
-# Zain Rahjeh — GitHub Pages Portfolio (V9 · lightweight)
+# Zain Rahjeh — Video Editor & Creative Portfolio
 
-This version is designed for **https://rahjeh92.github.io/video-editor/**.
+**A cinematic, interactive portfolio showcasing my work in video editing, storytelling, AI filmmaking, motion graphics, and visual design.**
 
-## Publish without GitHub's large-file error
+🌐 **Live website:** [rahjeh92.github.io/video-editor](https://rahjeh92.github.io/video-editor/)
 
-1. Open your existing repository: https://github.com/rahjeh92/video-editor
-2. Extract this ZIP to a local folder. **Do not upload the ZIP file itself.**
-3. Upload the contents of the extracted folder to the **root** of the repository. `index.html` must be at the repository root and the `assets` directory beside it.
-4. IMPORTANT: if previous versions are still in the repo, delete these old video files from GitHub (they are not in this ZIP):
-   - `assets/videos/car-drift.mp4`
-   - `assets/videos/card-connect.mp4`
-   - `assets/videos/zain-creative-showreel.mp4`
-   GitHub's upload window does not automatically delete files you omit from a new upload.
-5. Commit changes and wait for GitHub Pages deployment. Refresh with Ctrl + Shift + R.
+## About the project
 
-## Where the videos live
+I created this website to bring my creative work together in one place. Rather than using a traditional portfolio template, I wanted the experience itself to reflect the way I approach editing: visual storytelling, attention to detail, smooth pacing, and sound that supports the picture.
 
-All full-size MP4 files are now linked externally; no MP4 is bundled in this ZIP.
+The result is a responsive, cinematic portfolio with animated transitions, interactive project galleries, 3D visuals, and optional sound effects. It is designed to make it easy for recruiters, studios, and clients to explore my work and get in touch.
 
-- Portfolio / top showreel: `Portfolio.mp4` on Drive (ID `1v2OB5_9U-lkft2P_VCnB2Ns1NYxLQBnZ`)
-- Car Drift short: `Car Drift.mp4` on Drive (ID `1RI0T4Tag8lcZ0Afy2-HYHqrnB7bOkrzT`)
-- Product video / Card Connect: `UNI eCard.mp4` on Drive (ID `1HSPYo0Voinonj_-toxgsyHKpD6HgbrsR`)
-- Longer drift edit: `FuriousTom_Drift_Youtube.mp4` on Drive (ID `1bGGTWSMKUqaA2AbIWNkT3wS1TxsP83mg`)
-- AI videos, the eight ads, and the ten thumbnail designs: individual original Drive URLs as already configured.
-- YouTube episodes and Shorts still open their original YouTube pages, retaining timestamps.
+## What's inside
 
-**The original Google Drive folder:**
-https://drive.google.com/drive/folders/1Aqj-iHiS26Fia1lteQF8PxTnTGoQO_Pt
+- **Storytelling & long-form editing** — selected YouTube videos and narrative-driven edits.
+- **Short-form content** — Reels and Shorts made for social platforms.
+- **AI films & VFX** — creative experiments and finished AI-assisted film projects, including *Shadow Run / Cyberpunk Film*.
+- **Ads & commercial work** — promotional videos and social media advertisements.
+- **Color grading & motion** — visual treatment, graphics, and post-production techniques.
+- **Thumbnails & design** — a selection of my graphic and YouTube thumbnail designs.
+- **Creative showreel** — an overview of my editing style and creative range.
 
-## Notes
+## Website features
 
-- All preview images are local optimized WebP files, so cards display even when Drive's thumbnail endpoint is unreliable.
-- Clicking external project videos opens Google Drive in a new tab, avoiding YouTube Error 153 and unreliable Drive embeds.
-- Verify Drive sharing: each linked file must allow **Anyone with the link — Viewer** for recruiters who are not signed into your account.
-- The SFX toggle is ON by default, but browsers unlock sounds after the first user interaction.
-- Contact links and the email form should be checked before publishing. The form uses the visitor's email app, not a server.
-- `Shadow Run` is the finished **Cyberpunk Film** (Drive file `1UZm2RoN27rQhzETt0Uy9Wknk9bnlbAO3`), with its real poster and a full-video link.
-- Core site works as static HTML/CSS/JS; animations/fonts may load external CDN scripts and need internet access.
-- Check German business legal disclosure requirements if they apply to your public portfolio.
+- Responsive layout for desktop, tablet, and mobile
+- Interactive galleries and project case studies
+- Three.js visual effects and GSAP scroll-based animations
+- Custom sound effects with an **SFX ON / OFF** toggle
+- Accessible motion preferences for visitors who request reduced animation
+- Lightweight, optimized **WebP** project previews
+- Direct links to full videos on YouTube and Google Drive
+- Contact section with email and LinkedIn links
 
-## V10 corrections
-- Shadow Run is the finished Cyberpunk Film, not pre-production. The case now links to that film and uses the matching real poster.
-- The Last Goodbye has its own separate AI film case, avoiding a duplicate Cyberpunk film link in two case studies.
-- On iPhone/mobile, the top navigation Contact button stays visible and orange to match the orange actions below.
+## Built with
+
+| Technology | Purpose |
+| --- | --- |
+| HTML5 | Website structure and content |
+| CSS3 | Visual identity, layouts, and responsive design |
+| Vanilla JavaScript | Navigation, galleries, interactions, and case studies |
+| Three.js | 3D graphics and visual effects |
+| GSAP + ScrollTrigger | Motion design and scroll animations |
+| Web Audio API | Interactive sound effects |
+| GitHub Pages | Static website hosting |
+
+## Run locally
+
+No build step or framework installation is needed.
+
+1. Clone the repository:
+
+   `git clone https://github.com/rahjeh92/video-editor.git`
+
+2. Open the `video-editor` folder.
+3. Open `index.html` in a browser, or serve the folder with a local server for a more reliable preview:
+
+   `python -m http.server 8000`
+
+4. Visit [http://localhost:8000](http://localhost:8000).
+
+Some animation libraries and fonts load from external CDNs, so an internet connection is recommended. Browser audio policies may require your first click or tap before sound effects can play.
+
+## Project videos and assets
+
+The repository includes optimized preview images and website files. To keep the site fast and GitHub Pages-friendly, full-length videos are hosted externally and linked to their original YouTube or Google Drive pages. This also avoids uploading large video files to the repository.
+
+Project links can be updated in `index.html`, and preview images are organized in the `assets/` folder.
+
+## Deployment
+
+This portfolio is hosted on **GitHub Pages** from the `main` branch.
+
+To publish an update, commit the changed website files to the repository. GitHub Pages serves `index.html` from the repository root. No server or backend deployment is required.
+
+## Let's connect
+
+I'm based in Germany and open to video editing opportunities, creative collaborations, and remote projects.
+
+- **Portfolio:** [rahjeh92.github.io/video-editor](https://rahjeh92.github.io/video-editor/)
+- **LinkedIn:** [linkedin.com/in/zain-rahjeh92](https://www.linkedin.com/in/zain-rahjeh92/)
+- **Email:** [rahjeh2020@gmail.com](mailto:rahjeh2020@gmail.com)
+
+---
+
+**© 2026 Zain Rahjeh.** All portfolio video, imagery, and project materials are presented for demonstration purposes. Third-party libraries and media remain subject to their respective licenses and ownership.
