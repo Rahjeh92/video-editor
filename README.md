@@ -1,65 +1,45 @@
-# Zain Rahjeh — Portfolio Website
+# Zain Rahjeh — GitHub Pages Portfolio (V9 · lightweight)
 
-Professional static portfolio built for GitHub Pages. No Node.js build or database required.
+This version is designed for **https://rahjeh92.github.io/video-editor/**.
 
-## Publish the website (GitHub Pages)
+## Publish without GitHub's large-file error
 
-1. Extract this ZIP. **Upload the contents, not the ZIP itself.** `index.html` must be in the repository root.
-2. On GitHub click **New repository**. Suggested name: `zain-portfolio` (or `YOUR-USERNAME.github.io` for a root domain). Make it **Public**.
-3. Add the files, including `assets/` and `.nojekyll`. Commit to the **main** branch.
-4. Navigate to **Settings → Pages → Build and deployment → Source: Deploy from a branch**. Select **main** and **/(root)** and save.
-5. Your site becomes available at `https://YOUR-USERNAME.github.io/zain-portfolio/` (or `https://YOUR-USERNAME.github.io/` for a user-page repository). Publishing can take a few minutes.
-6. Add the live URL to your LinkedIn and CV.
+1. Open your existing repository: https://github.com/rahjeh92/video-editor
+2. Extract this ZIP to a local folder. **Do not upload the ZIP file itself.**
+3. Upload the contents of the extracted folder to the **root** of the repository. `index.html` must be at the repository root and the `assets` directory beside it.
+4. IMPORTANT: if previous versions are still in the repo, delete these old video files from GitHub (they are not in this ZIP):
+   - `assets/videos/car-drift.mp4`
+   - `assets/videos/card-connect.mp4`
+   - `assets/videos/zain-creative-showreel.mp4`
+   GitHub's upload window does not automatically delete files you omit from a new upload.
+5. Commit changes and wait for GitHub Pages deployment. Refresh with Ctrl + Shift + R.
 
-## What was fixed
+## Where the videos live
 
-- Rebranded navigation, title, About and SEO for **Zain Rahjeh** as a personal jobs portfolio.
-- Showreel is a **real included video** in `assets/videos/`, not an unconfigured YouTube playlist.
-- Four long-form films and five Shorts open the exact YouTube videos (including supplied timestamps). This avoids YouTube embed Error 153.
-- Three AI videos, eight advertising videos and ten thumbnail works use the confirmed Google Drive file IDs, linking each item directly.
-- Removed unreliable embedded Drive folder iframes. All galleries have real individual links.
-- Shorts shown as compact buttons/cards without blurry preview images.
-- Removed the forced intro gate, so recruiters see the portfolio immediately. 3D effects remain, where supported.
-- Form opens the visitor's **own email app** and is NOT a server-backed contact form. Address currently used: `rahjeh2020@gmail.com` (change in `index.html` if needed).
-- Added responsive gallery styling, favicon, better accessibility and GitHub Pages-relative local media paths.
+All full-size MP4 files are now linked externally; no MP4 is bundled in this ZIP.
 
-## Important notes
+- Portfolio / top showreel: `Portfolio.mp4` on Drive (ID `1v2OB5_9U-lkft2P_VCnB2Ns1NYxLQBnZ`)
+- Car Drift short: `Car Drift.mp4` on Drive (ID `1RI0T4Tag8lcZ0Afy2-HYHqrnB7bOkrzT`)
+- Product video / Card Connect: `UNI eCard.mp4` on Drive (ID `1HSPYo0Voinonj_-toxgsyHKpD6HgbrsR`)
+- Longer drift edit: `FuriousTom_Drift_Youtube.mp4` on Drive (ID `1bGGTWSMKUqaA2AbIWNkT3wS1TxsP83mg`)
+- AI videos, the eight ads, and the ten thumbnail designs: individual original Drive URLs as already configured.
+- YouTube episodes and Shorts still open their original YouTube pages, retaining timestamps.
 
-- The three.js animation, GSAP motion and Google Fonts load from online CDNs, so internet access is needed for those effects. Core HTML and local showreel remain included in the repo.
-- The website never needs visitors to connect Google Drive, but individual shared files must allow **Anyone with the link → Viewer** or a logged-in authorized viewer.
-- Google Drive thumbnail services sometimes block image previews. If a thumbnail is unavailable, the gallery still shows the project title and working file link. For guaranteed images, replace Drive previews with local `assets/thumbs/*.webp` files.
-- The grading comparison is a visual illustration, NOT a proven client before/after.
-- Verify private-client case study details and client permissions before public launch.
-- Check your email and personal information before publishing.
-- For a professional portfolio operated from Germany, check whether you need an **Impressum** and **Datenschutzerklärung**. These legally required personal details cannot be filled in without your review.
-- Do not use Git LFS for the showreel: GitHub Pages does not reliably serve LFS media in normal static page builds.
+**The original Google Drive folder:**
+https://drive.google.com/drive/folders/1Aqj-iHiS26Fia1lteQF8PxTnTGoQO_Pt
 
-## Local test
+## Notes
 
-Open `index.html` directly (local video plays, some external effects/media may have restrictions), or run a local web server:
+- All preview images are local optimized WebP files, so cards display even when Drive's thumbnail endpoint is unreliable.
+- Clicking external project videos opens Google Drive in a new tab, avoiding YouTube Error 153 and unreliable Drive embeds.
+- Verify Drive sharing: each linked file must allow **Anyone with the link — Viewer** for recruiters who are not signed into your account.
+- The SFX toggle is ON by default, but browsers unlock sounds after the first user interaction.
+- Contact links and the email form should be checked before publishing. The form uses the visitor's email app, not a server.
+- `Shadow Run` is the finished **Cyberpunk Film** (Drive file `1UZm2RoN27rQhzETt0Uy9Wknk9bnlbAO3`), with its real poster and a full-video link.
+- Core site works as static HTML/CSS/JS; animations/fonts may load external CDN scripts and need internet access.
+- Check German business legal disclosure requirements if they apply to your public portfolio.
 
-```sh
-python -m http.server 8000
-```
-
-Then open http://localhost:8000. Check the desktop/mobile layouts, Play Showreel, YouTube and Drive links, and email form.
-
-
-## Image repair (this update)
-
-- 8 original, locally generated ad stills in `assets/ads/` (extracted from the actual advertising videos).
-- 10 real thumbnail designs in `assets/thumbs/` (optimized WebP).
-- Thumbnails and ads galleries now display those local images; all cards still link to the original Google Drive video/image.
-- The AI eCard work also has a local screenshot. The Case Files for Design and Ads use real mosaics of your work rather than synthetic placeholders.
-- To update your published repository `rahjeh92/video-editor`, upload **all contents of this ZIP** to your existing repository root, with `index.html` at root. Commit, then wait for GitHub Pages deployment and hard-refresh the website (Ctrl+Shift+R).
-- Do not upload just the ZIP. No need to change your existing GitHub Pages Settings.
-- Video files on Drive still require visitor access. The local preview art will render independently of Drive permissions.
-
-## Update v7 — sound and long-form project naming
-
-- The navigation sound-effects toggle now starts as **SFX ON** on every page load. Visitors can switch it **OFF** from the header at any time. The switch supports mouse, touch, and keyboard.
-- **Important:** Browsers block audible Web Audio before a user gesture. Effects begin working on the first click, tap, or keyboard interaction. This is a browser security policy; the interface correctly shows SFX ON as the intended default.
-- Long-form YouTube projects are now labeled **EPISODE** rather than FILM; the section is named Storytelling. AI Films keep their film terminology.
-- Lake Natoma's **12.3 miles** refers to the route length, not video runtime. The card now says **Full episode** until its exact video duration can be verified. Route distance remains in the case-study description.
-
-Upload all extracted files (especially index.html) over the existing GitHub Pages repository at rahjeh92/video-editor and commit changes.
+## V10 corrections
+- Shadow Run is the finished Cyberpunk Film, not pre-production. The case now links to that film and uses the matching real poster.
+- The Last Goodbye has its own separate AI film case, avoiding a duplicate Cyberpunk film link in two case studies.
+- On iPhone/mobile, the top navigation Contact button stays visible and orange to match the orange actions below.
