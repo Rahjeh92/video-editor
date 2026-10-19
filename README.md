@@ -43,3 +43,14 @@ python -m http.server 8000
 ```
 
 Then open http://localhost:8000. Check the desktop/mobile layouts, Play Showreel, YouTube and Drive links, and email form.
+
+
+## Image repair (this update)
+
+- 8 original, locally generated ad stills in `assets/ads/` (extracted from the actual advertising videos).
+- 10 real thumbnail designs in `assets/thumbs/` (optimized WebP).
+- Thumbnails and ads galleries now display those local images; all cards still link to the original Google Drive video/image.
+- The AI eCard work also has a local screenshot. The Case Files for Design and Ads use real mosaics of your work rather than synthetic placeholders.
+- To update your published repository `rahjeh92/video-editor`, upload **all contents of this ZIP** to your existing repository root, with `index.html` at root. Commit, then wait for GitHub Pages deployment and hard-refresh the website (Ctrl+Shift+R).
+- Do not upload just the ZIP. No need to change your existing GitHub Pages Settings.
+- Video files on Drive still require visitor access. The local preview art will render independently of Drive permissions.

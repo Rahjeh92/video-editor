@@ -487,6 +487,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 #lb a{z-index:2}
 #form input,#form textarea,#form select{font-size:16px}
 @media(prefers-reduced-motion:reduce){.ad-item:hover,.short-link:hover,.drive-art:hover{transform:none}}
+
+/* Local original artwork: preview images no longer depend on Google Drive thumbnails */
+.ad-cover img{opacity:1;object-position:center 42%}
+.ad-play{z-index:4;box-shadow:0 8px 25px #0009;pointer-events:none}
+.drive-visual.ad-visual{aspect-ratio:4/5}
+.drive-visual.ad-visual img{object-position:center 38%}
+.drive-visual .drive-play{position:absolute;z-index:3;background:rgba(8,9,14,.55)}
+.drive-grid.ads-gallery{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:900px){.drive-grid.ads-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.ad-cover{aspect-ratio:4/5}.ad-play{width:48px;height:48px}.ad-meta strong{font-size:17px}}
+
 </style>
 </head><body>
 
@@ -861,30 +872,30 @@ const SHOWREEL = {id:"assets/videos/zain-creative-showreel.mp4", title:"Creative
 const PF_REEL  = {id:"", title:"Before / After", len:"0:45"};
 const FOLDERS = {thumbs:"1CZejKipXV2M068MMwsD3Hr8v_J2dCvIS", ads:"1EZLK0__q6NpJkLkvu8XfxT_Gb905UdBU"};
 const THUMBNAILS = [
-  {id:"1gJP_ACoziSXOhU-OMMF-eqwY0bsZUZdP",title:"Escape Attempt"},
-  {id:"1zbBlXHETRbZasqQj2t5yod0plbfDnBp7",title:"First Boss"},
-  {id:"1brZ0L0m9HEr9g-b4MdKMEaYAfaLyOKeJ",title:"Giant Gate"},
-  {id:"1D8jAsmVEkeTUw3epZAN5VShYfGD74M5G",title:"Horror Begins"},
-  {id:"1Y_CQeaS9i9f_2Q9KpfNATWlS_sBCb1te",title:"Impossible Moment"},
-  {id:"1RockesWJpUpGFCex9xR4kZThSqCaX8kL",title:"Losing Hope"},
-  {id:"1u7okqCOq4jAEEZI99ZfZkvROk3QEwMys",title:"Our Place"},
-  {id:"1Js1x06I2fTFwhQylDzTIQbV4isCLHSsL",title:"Rat Trap"},
-  {id:"1kdQNJuSUE5l4wX93scPtFmx3i9fHHpVP",title:"Undead City"},
-  {id:"1a-BxVMPSqdx6hTGneOSSD-edJtlzZnQw",title:"Unexpected Friendship"}
+  {id:"1gJP_ACoziSXOhU-OMMF-eqwY0bsZUZdP",title:"Escape Attempt",image:"assets/thumbs/escape-attempt.webp"},
+  {id:"1zbBlXHETRbZasqQj2t5yod0plbfDnBp7",title:"First Boss",image:"assets/thumbs/first-boss.webp"},
+  {id:"1brZ0L0m9HEr9g-b4MdKMEaYAfaLyOKeJ",title:"Giant Gate",image:"assets/thumbs/giant-gate.webp"},
+  {id:"1D8jAsmVEkeTUw3epZAN5VShYfGD74M5G",title:"Horror Begins",image:"assets/thumbs/horror-begins.webp"},
+  {id:"1Y_CQeaS9i9f_2Q9KpfNATWlS_sBCb1te",title:"Impossible Moment",image:"assets/thumbs/impossible-moment.webp"},
+  {id:"1RockesWJpUpGFCex9xR4kZThSqCaX8kL",title:"Losing Hope",image:"assets/thumbs/losing-hope.webp"},
+  {id:"1u7okqCOq4jAEEZI99ZfZkvROk3QEwMys",title:"Our Place",image:"assets/thumbs/our-place.webp"},
+  {id:"1Js1x06I2fTFwhQylDzTIQbV4isCLHSsL",title:"Rat Trap",image:"assets/thumbs/rat-trap.webp"},
+  {id:"1kdQNJuSUE5l4wX93scPtFmx3i9fHHpVP",title:"Undead City",image:"assets/thumbs/undead-city.webp"},
+  {id:"1a-BxVMPSqdx6hTGneOSSD-edJtlzZnQw",title:"Unexpected Friendship",image:"assets/thumbs/unexpected-friendship.webp"}
 ];
 const ADS = [
-  {id:"1tZbqoonnWOmGvdK4Kv8Z2pSrYE5HBAO7",title:"Meta Ad · 02",sub:"Paid Social · Commercial"},
-  {id:"15GPibSxh9fcuxzbqD459LWl-vEXGieaP",title:"Meta Ad · 01",sub:"Paid Social · Commercial"},
-  {id:"1nkyGVOk9a8-uGRQZ5Rd20RnwEKXefzjV",title:"Lawn Care · 01",sub:"Service Promotion"},
-  {id:"1JRVuZ44zhVKzlGFBxm4ZKVysZK0ae0H-",title:"Lawn Care · 02",sub:"Service Promotion"},
-  {id:"11ldyXHSg64oDO0lgJbB00uPSjUCZDF6k",title:"Lifestyle Ad · 02",sub:"Short-form Promotion"},
-  {id:"1oXdJxRpx4e9ceaYP8DvR0LxVTbjsNN6C",title:"Lifestyle Ad · 01",sub:"Short-form Promotion"},
-  {id:"1azFiM4IkxtzYhWWsHADZk0Rw_p_2sLE9",title:"Promotional Offer · 01",sub:"Retail & Hospitality"},
-  {id:"16-g0cslfAKYJsGOpOzqTbab0UCMp1qgC",title:"Promotional Offer · 02",sub:"Retail & Hospitality"}
+  {id:"1tZbqoonnWOmGvdK4Kv8Z2pSrYE5HBAO7",title:"Meta Ad · 02",sub:"Paid Social · Commercial",poster:"assets/ads/meta-02.webp"},
+  {id:"15GPibSxh9fcuxzbqD459LWl-vEXGieaP",title:"Meta Ad · 01",sub:"Paid Social · Commercial",poster:"assets/ads/meta-01.webp"},
+  {id:"1nkyGVOk9a8-uGRQZ5Rd20RnwEKXefzjV",title:"Lawn Care · 01",sub:"Service Promotion",poster:"assets/ads/lawn-01.webp"},
+  {id:"1JRVuZ44zhVKzlGFBxm4ZKVysZK0ae0H-",title:"Lawn Care · 02",sub:"Service Promotion",poster:"assets/ads/lawn-02.webp"},
+  {id:"11ldyXHSg64oDO0lgJbB00uPSjUCZDF6k",title:"Lifestyle Ad · 02",sub:"Short-form Promotion",poster:"assets/ads/lifestyle-02.webp"},
+  {id:"1oXdJxRpx4e9ceaYP8DvR0LxVTbjsNN6C",title:"Lifestyle Ad · 01",sub:"Short-form Promotion",poster:"assets/ads/lifestyle-01.webp"},
+  {id:"1azFiM4IkxtzYhWWsHADZk0Rw_p_2sLE9",title:"Promotional Offer · 01",sub:"Retail & Hospitality",poster:"assets/ads/offer-01.webp"},
+  {id:"16-g0cslfAKYJsGOpOzqTbab0UCMp1qgC",title:"Promotional Offer · 02",sub:"Retail & Hospitality",poster:"assets/ads/offer-02.webp"}
 ];
 /* Optional: put image files in assets/thumbs and assets/ads and list them here
    (e.g. "assets/thumbs/snow-canyon.jpg"). Local galleries and public Drive links are both supported. */
-const IMAGES = {thumbs:[], ads:[]};
+const IMAGES = {thumbs:THUMBNAILS.map(v=>v.image), ads:ADS.map(v=>v.poster)};
 
 /* =====================================================================
    CASE FILES · the story behind each project
@@ -1270,10 +1281,10 @@ $('#aigrid').innerHTML=AI.map((v,i)=>`
     <span class="badge mono">AI · Directed &amp; edited</span>
     <span class="t"><span class="mono">${v.tags}</span><h3 data-g="${v.title}">${v.title}</h3></span>
   </button>`).join('');
-$$('#aigrid .img').forEach((el,i)=>bgImg(el,[i===0?'assets/images/last-goodbye.webp':i===1?'assets/images/cyberpunk.webp':`https://drive.google.com/thumbnail?id=${AI[i].id}&sz=w1200`]));
+$$('#aigrid .img').forEach((el,i)=>bgImg(el,[i===0?'assets/images/last-goodbye.webp':i===1?'assets/images/cyberpunk.webp':'assets/images/uni-ecard.webp']));
 
 $('#ad-grid').innerHTML=ADS.map((v,i)=>`<a class="ad-item" href="https://drive.google.com/file/d/${v.id}/view" target="_blank" rel="noopener noreferrer" aria-label="Watch ${v.title}">
-  <span class="ad-cover" style="--ad-no:${i}"><span class="ad-number mono">AD / ${String(i+1).padStart(2,'0')}</span><span class="ad-play">▶</span>${i===0?'<img src="assets/images/meta-ad.webp" alt="Commercial editing preview" loading="lazy">':''}</span>
+  <span class="ad-cover" style="--ad-no:${i}"><span class="ad-number mono">AD / ${String(i+1).padStart(2,'0')}</span><span class="ad-play">▶</span><img src="${v.poster}" alt="Preview frame from ${v.title}" loading="eager" decoding="async"></span>
   <span class="ad-meta"><span><strong>${v.title}</strong><small>${v.sub}</small></span><span class="mono">WATCH ↗</span></span></a>`).join('');
 
 function drawAll(){ $$('canvas[data-art]').forEach(c=>paint(c,c.dataset.art,+c.dataset.seed||0)); paint($('#after'),'sunset'); paint($('#before'),'sunset'); drawParade(); }
@@ -1304,7 +1315,8 @@ let rto; addEventListener('resize',()=>{clearTimeout(rto);rto=setTimeout(()=>{dr
 /* =====================================================================
    CASE FILES · filters + drawer
    ===================================================================== */
-const thumbOf=c=>{ const m=c.media[0]; if(!m) return [];
+const CASE_POSTERS = {aifilms:'assets/images/last-goodbye.webp',thumbs:'assets/images/thumbnails-collection.webp',ads:'assets/images/ads-collection.webp'};
+const thumbOf=c=>{ if(CASE_POSTERS[c.key]) return [CASE_POSTERS[c.key]]; const m=c.media[0]; if(!m) return [];
   if(m.kind==='local') return ['assets/videos/zain-creative-showreel.webp'];
   if(m.kind==='yt') return yt(m.id); if(m.kind==='drive') return [`https://drive.google.com/thumbnail?id=${m.id}&sz=w1200`];
   if(m.kind==='folder'&&IMAGES[m.id].length) return [IMAGES[m.id][0]]; return []; };
@@ -1427,9 +1439,9 @@ cmp.addEventListener('pointerenter',()=>SFX.hover());
     $('#monLbl').textContent='Gallery · '+(k==='thumbs'?'Thumbnails':'Ads archive');
     $$('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.k===k));
     const records=k==='thumbs'?THUMBNAILS:ADS;
-    scr.innerHTML=`<div class="drive-grid">${records.map((it,i)=>`
+    scr.innerHTML=`<div class="drive-grid ${k==='ads'?'ads-gallery':''}">${records.map((it,i)=>`
       <a class="drive-art" href="https://drive.google.com/file/d/${it.id}/view" target="_blank" rel="noopener noreferrer" aria-label="Open ${it.title}">
-        <span class="drive-visual" style="--idx:${i}">${k==='thumbs'?`<img loading="lazy" referrerpolicy="no-referrer" src="https://drive.google.com/thumbnail?id=${it.id}&sz=w800" alt="${it.title}" onerror="this.style.display='none'">`:'<span class="drive-play">▶</span>'}</span>
+        <span class="drive-visual ${k==='ads'?'ad-visual':''}" style="--idx:${i}"><img loading="lazy" decoding="async" src="${k==='thumbs'?it.image:it.poster}" alt="${it.title} project preview">${k==='ads'?'<span class="drive-play">▶</span>':''}</span>
         <span class="drive-bottom"><span>${it.title}</span><span class="mono">${k==='thumbs'?'DESIGN':'VIDEO'} ↗</span></span>
       </a>`).join('')}</div><div class="folder-cta"><a href="https://drive.google.com/drive/folders/${FOLDERS[k]}" target="_blank" rel="noopener noreferrer">Open full ${k==='thumbs'?'thumbnails':'ads'} folder ↗</a></div>`;
   }
