@@ -238,21 +238,35 @@ section{padding-block:clamp(90px,12vw,150px)}
 @media(max-width:700px){.ai{grid-template-columns:1fr}.ai .aicard{aspect-ratio:4/3}}
 
 /* ---------- grade compare ---------- */
-.compare{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);aspect-ratio:21/9;max-width:100%;user-select:none;touch-action:pan-y;background:var(--panel)}
+.compare{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);aspect-ratio:21/9;max-width:100%;user-select:none;touch-action:none;cursor:ew-resize;background:var(--panel)}
 @media(max-width:720px){.compare{aspect-ratio:4/3}}
-.compare canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.compare .before{filter:saturate(.3) contrast(.58) brightness(1.2) sepia(.08);clip-path:inset(0 calc(100% - var(--x,50%)) 0 0)}
+.compare .grade-img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center 45%;pointer-events:none}
+.compare .before{clip-path:inset(0 calc(100% - var(--x,50%)) 0 0)}
+.compare:focus-within{outline:2px solid var(--amber);outline-offset:3px}
+.compare .tag{z-index:2}
+.compare .handle{z-index:2}
+.compare input{z-index:3}
+.compare .grade-credit{position:absolute;bottom:12px;left:16px;z-index:2;pointer-events:none;padding:6px 9px;border-radius:5px;background:rgba(8,9,14,.65);color:#e0e4e9;font:10px var(--mono);letter-spacing:.01em}
+@media(max-width:540px){.compare .tag{top:10px;font-size:10px;padding:5px 7px}.compare .tag.l{left:10px}.compare .tag.r{right:10px}.compare .grade-credit{left:10px;bottom:9px;font-size:9px;max-width:84%}}
 .compare .handle{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;background:var(--fg);transform:translateX(-1px);pointer-events:none}
 .compare .handle::after{content:"◂ ▸";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:var(--fg);color:var(--ink);display:grid;place-items:center;font-size:13px;letter-spacing:.1em}
 .compare .tag{position:absolute;top:16px;padding:6px 10px;border-radius:6px;background:color-mix(in srgb,var(--ink) 70%,transparent);backdrop-filter:blur(6px);color:var(--fg);pointer-events:none}
 .compare .tag.l{left:16px}.compare .tag.r{right:16px;color:var(--amber)}
-.compare input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:ew-resize;margin:0}
+.compare .drag-hint{position:absolute;right:14px;bottom:12px;z-index:2;pointer-events:none;background:rgba(8,9,14,.7);padding:6px 8px;border-radius:5px;color:var(--fg);font-size:10px;letter-spacing:.06em}
+@media(max-width:540px){.compare .drag-hint{font-size:9px;right:10px;bottom:10px}}
+.compare input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:ew-resize;margin:0;pointer-events:none}
 .scopes{display:grid;grid-template-columns:1fr auto;gap:20px;margin-top:20px;align-items:start}
 .nodes{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .node{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:8px 12px;font:12px var(--mono);color:var(--fg)}
 .node b{color:var(--teal);font-weight:600;margin-right:6px}
 .nodes .ar{color:var(--mute);font-family:var(--mono)}
-#parade{width:240px;height:90px;border:1px solid var(--line);border-radius:8px;background:#05060a}
+#parade{width:240px;height:90px;border:1px solid var(--line);border-radius:8px;background:#05060a;position:relative;overflow:hidden;isolation:isolate}
+#parade img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}
+#parade .rgb-flat{clip-path:inset(0 calc(100% - var(--x,50%)) 0 0)}
+#parade .rgb-axis{position:absolute;z-index:2;left:0;right:0;top:0;padding:5px 7px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(#05060acc,transparent);font:8px var(--mono);letter-spacing:.04em;color:var(--fg);pointer-events:none}
+#parade .rgb-axis .ch-labels{display:flex;gap:6px;font-weight:700}
+#parade .rgb-axis .ch-labels b:nth-child(1){color:#ff7777}#parade .rgb-axis .ch-labels b:nth-child(2){color:#6effab}#parade .rgb-axis .ch-labels b:nth-child(3){color:#83b0ff}
+
 @media(max-width:720px){.scopes{grid-template-columns:1fr}#parade{width:100%}}
 
 /* ---------- timeline ---------- */
@@ -686,15 +700,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <div class="eyebrow mono" data-scr>Color grading</div>
         <h2 class="mask"><span>Log in.</span></h2><h2 class="mask"><span class="amb">Story out.</span></h2>
       </div>
-      <p>Interactive illustration of a color-grading workflow (not a client before/after). Drag the slider to compare the visual treatments.</p>
+      <p>A real frame from my Color Grading #2 video. Slide between a reconstructed flat/LOG-style preview and the actual final grade, using the exact same frame. <a href="https://drive.google.com/file/d/15WkKxm0bkssRqvVYOUbUDVSE4TbGKb_A/view" target="_blank" rel="noopener noreferrer" style="color:var(--amber);text-decoration:underline;text-underline-offset:4px">Watch the grading breakdown ↗</a></p>
     </div>
-    <div class="compare" id="cmp">
-      <canvas id="after"></canvas>
-      <canvas id="before" class="before"></canvas>
-      <div class="handle"></div>
-      <span class="tag l mono">Illustration · Flat</span>
-      <span class="tag r mono">Illustration · Graded</span>
-      <input id="cmpRange" type="range" min="0" max="100" value="50" aria-label="Compare before and after grade">
+    <div class="compare" id="cmp" style="--x:50%" title="Drag left or right to compare the color grade">
+      <img id="after" class="grade-img" src="assets/images/grade-after.webp" alt="Final color-graded shot from my Color Grading #2 project" decoding="async" loading="eager">
+      <img id="before" class="grade-img before" src="assets/images/grade-before.webp" alt="Reconstructed flat LOG-style version of the same frame" decoding="async" loading="eager">
+      <div class="handle" aria-hidden="true"></div>
+      <span class="tag l mono">FLAT / LOG-STYLE</span>
+      <span class="tag r mono">FINAL GRADE</span>
+      <span class="grade-credit">Color Grading #2 · flat look simulated for comparison</span>
+      <span class="drag-hint mono" aria-hidden="true">DRAG TO COMPARE ↔</span>
+      <input id="cmpRange" type="range" min="0" max="100" value="50" aria-label="Slide to compare flat LOG-style image (left) with graded image (right)">
     </div>
     <div class="scopes">
       <div class="nodes" aria-label="Node tree">
@@ -705,7 +721,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <span class="node"><b>05</b>Look</span><span class="ar">→</span>
         <span class="node"><b>06</b>CST Out</span>
       </div>
-      <canvas id="parade" aria-label="RGB parade scope"></canvas>
+      <div id="parade" role="img" aria-label="RGB Parade scopes generated from the graded frame. The visual changes as you drag the comparison slider." style="--x:50%">
+        <img class="rgb-final" loading="lazy" src="assets/images/rgb-parade-after.webp" alt="" aria-hidden="true">
+        <img class="rgb-flat" loading="lazy" src="assets/images/rgb-parade-before.webp" alt="" aria-hidden="true">
+        <div class="rgb-axis"><span>RGB PARADE</span><span class="ch-labels"><b>R</b><b>G</b><b>B</b></span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1309,7 +1329,7 @@ $('#ad-grid').innerHTML=ADS.map((v,i)=>`<a class="ad-item" href="https://drive.g
   <span class="ad-cover" style="--ad-no:${i}"><span class="ad-number mono">AD / ${String(i+1).padStart(2,'0')}</span><span class="ad-play">▶</span><img src="${v.poster}" alt="Preview frame from ${v.title}" loading="lazy" decoding="async"></span>
   <span class="ad-meta"><span><strong>${v.title}</strong><small>${v.sub}</small></span><span class="mono">WATCH ↗</span></span></a>`).join('');
 
-function drawAll(){ $$('canvas[data-art]').forEach(c=>paint(c,c.dataset.art,+c.dataset.seed||0)); paint($('#after'),'sunset'); paint($('#before'),'sunset'); drawParade(); }
+function drawAll(){ $$('canvas[data-art]').forEach(c=>paint(c,c.dataset.art,+c.dataset.seed||0)); drawParade(); }
 (document.fonts?document.fonts.ready:Promise.resolve()).then(drawAll); drawAll();
 let rto; addEventListener('resize',()=>{clearTimeout(rto);rto=setTimeout(()=>{drawAll(); if(window.ScrollTrigger) ScrollTrigger.refresh();},200);});
 
@@ -1431,21 +1451,19 @@ $('#reel').addEventListener('click',playReel);
    COLOR COMPARE + RGB PARADE
    ===================================================================== */
 const cmp=$('#cmp'), rng=$('#cmpRange');
+/* The parade is pre-rendered from the actual image frames. This avoids
+   canvas getImageData restrictions when index.html is opened with file://,
+   and remains fully functional on GitHub Pages and on mobile browsers. */
 function drawParade(){
-  const c=$('#parade'); const r=c.getBoundingClientRect(); const dpr=Math.min(devicePixelRatio,2);
-  c.width=Math.max(2,r.width*dpr); c.height=Math.max(2,r.height*dpr); const x=c.getContext('2d');
-  const src=$('#after'); if(!src.width) return; const sw=64,shh=36; const tmp=document.createElement('canvas'); tmp.width=sw; tmp.height=shh;
-  const tx=tmp.getContext('2d'); tx.drawImage(src,0,0,sw,shh); const d=tx.getImageData(0,0,sw,shh).data;
-  const split=(+$('#cmpRange').value)/100, W=c.width/3, H=c.height; x.clearRect(0,0,c.width,H); x.globalCompositeOperation='lighter';
-  const cols=['rgba(255,70,70,.35)','rgba(70,255,120,.35)','rgba(80,140,255,.35)'];
-  for(let ch=0;ch<3;ch++){ x.fillStyle=cols[ch];
-    for(let px=0;px<sw;px++) for(let py=0;py<shh;py++){ const i=(py*sw+px)*4; let v=d[i+ch];
-      if(px/sw<split){ const l=(d[i]+d[i+1]+d[i+2])/3; v=(l+(v-l)*.3); v=128+(v-128)*.58+30; }
-      x.fillRect(ch*W+px/sw*W, H-(v/255)*H*.92-2, Math.max(1,W/sw), 2*dpr); } }
-  x.globalCompositeOperation='source-over'; x.fillStyle='rgba(255,255,255,.08)'; for(let k=1;k<3;k++) x.fillRect(k*W,0,1,H);
+  const scope=$('#parade'), ctrl=$('#cmpRange');
+  if(!scope||!ctrl)return;
+  const pct=Math.max(0,Math.min(100,Number(ctrl.value)||0));
+  scope.style.setProperty('--x', pct+'%');
 }
+$('#after').addEventListener('load',drawParade);
+$('#before').addEventListener('load',drawParade);
 const setX=v=>{ cmp.style.setProperty('--x',v+'%'); };
-let pt=0; rng.addEventListener('input',()=>{ setX(rng.value); SFX.tick(); const n=performance.now(); if(n-pt>60){pt=n;drawParade();} });
+let pt=0; rng.addEventListener('input',()=>{ cmp.dataset.userMoved='true'; setX(rng.value); SFX.tick(); const n=performance.now(); if(n-pt>60){pt=n;drawParade();} });
 cmp.addEventListener('pointerenter',()=>SFX.hover());
 
 /* =====================================================================
@@ -1494,7 +1512,7 @@ if(window.gsap && window.ScrollTrigger && !reduce){
   clips.forEach((c,i)=>gsap.from(c,{scaleX:.15,transformOrigin:'left',duration:.9,ease:'expo.out',delay:i*.04,scrollTrigger:{trigger:'#tl',start:'top 85%'}}));
   gsap.utils.toArray('.step,.aicard').forEach(c=>gsap.from(c,{y:46,duration:1,ease:'expo.out',scrollTrigger:{trigger:c,start:'top 94%'}}));
   // compare auto-sweep
-  const o={v:12}; gsap.to(o,{v:50,duration:2,ease:'power3.inOut',onUpdate:()=>{setX(o.v);rng.value=o.v;},onComplete:drawParade,scrollTrigger:{trigger:cmp,start:'top 75%',onEnter:()=>SFX.riser(1.6)}});
+  const o={v:12}; gsap.to(o,{v:50,duration:2,ease:'power3.inOut',onUpdate:()=>{if(!cmp.dataset.userMoved){setX(o.v);rng.value=o.v;}},onComplete:drawParade,scrollTrigger:{trigger:cmp,start:'top 75%',onEnter:()=>SFX.riser(1.6)}});
   // counters
   ScrollTrigger.create({trigger:'#stats',start:'top 85%',once:true,onEnter:()=>$$('[data-n]').forEach(el=>{ const n=+el.dataset.n,d=+el.dataset.d||0,ob={v:0};
     gsap.to(ob,{v:n,duration:1.6,ease:'power2.out',onUpdate:()=>{el.textContent=ob.v.toFixed(d);SFX.tick();}}); })});
@@ -1550,5 +1568,63 @@ const unlockSfxAudio = () => {
 };
 document.addEventListener('pointerdown', unlockSfxAudio, {once:true, capture:true});
 document.addEventListener('keydown', unlockSfxAudio, {once:true, capture:true});
+</script>
+<script>
+/* Independent comparison controller, using direct pointer capture so the user
+   can drag on any point of the image, on both touch and mouse. This code runs
+   separately from the animation/3D script for resilience. */
+(() => {
+  const compare = document.getElementById('cmp');
+  const slider = document.getElementById('cmpRange');
+  if (!compare || !slider) return;
+  let activePointer = null;
+  let inputFrame = 0;
+
+  const updatePosition = (value, fromPointer = false) => {
+    const clamped = Math.max(0, Math.min(100, Number(value) || 0));
+    compare.style.setProperty('--x', `${clamped}%`);
+    slider.value = String(Math.round(clamped));
+    if (fromPointer) compare.dataset.userMoved = 'true';
+  };
+  const notifyInputs = () => {
+    if (inputFrame) return;
+    inputFrame = requestAnimationFrame(() => {
+      inputFrame = 0;
+      slider.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+  };
+  const moveToPointer = (event) => {
+    const rect = compare.getBoundingClientRect();
+    if (!rect.width) return;
+    updatePosition(((event.clientX - rect.left) / rect.width) * 100, true);
+    notifyInputs();
+  };
+  compare.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    activePointer = event.pointerId;
+    try { compare.setPointerCapture(activePointer); } catch (_) {}
+    slider.focus({ preventScroll: true });
+    moveToPointer(event);
+    event.preventDefault();
+  });
+  compare.addEventListener('pointermove', (event) => {
+    if (event.pointerId !== activePointer) return;
+    moveToPointer(event);
+    event.preventDefault();
+  });
+  const stopDragging = (event) => {
+    if (event.pointerId !== activePointer) return;
+    if (event.type === 'pointerup') moveToPointer(event);
+    activePointer = null;
+    if (compare.hasPointerCapture(event.pointerId)) compare.releasePointerCapture(event.pointerId);
+  };
+  compare.addEventListener('pointerup', stopDragging);
+  compare.addEventListener('pointercancel', stopDragging);
+  compare.addEventListener('lostpointercapture', (event) => {
+    if (activePointer === event.pointerId) activePointer = null;
+  });
+  // Accessible keyboard operation: focus with Tab and move with arrow keys.
+  slider.addEventListener('input', () => updatePosition(slider.value, true));
+})();
 </script>
 </body></html>

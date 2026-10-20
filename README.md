@@ -92,3 +92,17 @@ I'm based in Germany and open to video editing opportunities, creative collabora
 
 - I describe my editing experience as **4+ years** throughout the portfolio.
 - The production process begins with **Brief & Media Prep** and closes with **QC & Export**.
+
+## Interactive color-grading comparison
+
+I included a before/after slider in the Color Grading section using a frame from my `Color Grading #2` video. The **Graded** side is the actual final shot; the **Flat / LOG-style** side is a reconstructed preview from the same frame rather than an untouched camera LOG original. This lets visitors compare the visual treatment without the subject moving between shots. Both WebP images are saved locally under `assets/images/` to work reliably on GitHub Pages.
+
+
+### Color Grading Comparison
+
+Drag anywhere across the comparison image using a mouse or finger to reveal the simulated flat LOG-style preview versus the actual graded image. For keyboard operation, Tab to the comparison and use the arrow keys. The flat image is a reconstruction, not the original camera LOG file.
+
+
+### RGB waveform / parade (v15)
+
+The Color Grading section includes a three-channel RGB parade below the LOG-style / GRADED comparison. It uses locally generated WebP parade images sourced from the same grading footage to display reliably on GitHub Pages, file:// local previews, iPhones and desktops without requiring cross-origin canvas pixel reads. Sliding the main control adjusts the visual split in the RGB parade as well. This is a color scope, not an audio waveform.
