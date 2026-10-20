@@ -49,16 +49,20 @@ No build step or framework installation is needed.
 
 1. Clone the repository:
 
-   `git clone https://github.com/rahjeh92/video-editor.git`
+   ```bash
+   git clone https://github.com/rahjeh92/video-editor.git
+   ```
 
 2. Open the `video-editor` folder.
 3. Open `index.html` in a browser, or serve the folder with a local server for a more reliable preview:
 
-   `python -m http.server 8000`
+   ```bash
+   python -m http.server 8000
+   ```
 
 4. Visit [http://localhost:8000](http://localhost:8000).
 
-Some animation libraries and fonts load from external CDNs, so an internet connection is recommended. Browser audio policies may require your first click or tap before sound effects can play.
+> Some animation libraries and fonts load from external CDNs, so an internet connection is recommended. Browser audio policies may require your first click or tap before sound effects can play.
 
 ## Project videos and assets
 
@@ -83,3 +87,8 @@ I'm based in Germany and open to video editing opportunities, creative collabora
 ---
 
 **© 2026 Zain Rahjeh.** All portfolio video, imagery, and project materials are presented for demonstration purposes. Third-party libraries and media remain subject to their respective licenses and ownership.
+
+## Latest adjustments
+
+- I describe my editing experience as **4+ years** throughout the portfolio.
+- The production process begins with **Brief & Media Prep** and closes with **QC & Export**.
