@@ -2,7 +2,9 @@
 <title>Zain Rahjeh | Video Editor & Creative Portfolio</title>
 <meta name="theme-color" content="#08090e">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<meta name="description" content="Zain Rahjeh — Video Editor, Motion Designer and AI Video Creator based in Germany. Cinematic editing, storytelling, color grading and sound design.">
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Zain Rahjeh, Video Editor, Motion Designer and AI Video Creator based in Germany. Cinematic editing, storytelling, color grading and sound design.">
 <meta property="og:title" content="Zain Rahjeh | Video Editor & Creative Portfolio">
 <meta property="og:description" content="Cinematic editing, long-form storytelling, ads, AI films, VFX and motion design. View selected work by Zain Rahjeh.">
 <meta property="og:type" content="website">
@@ -469,7 +471,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 /* GitHub Pages polish · accessible galleries and consistent direct playback */
 .head>div{min-width:0;max-width:100%}
 @media(max-width:450px){.head h2{font-size:clamp(36px,9vw,48px)}}
-#gate{display:none!important}
 .logo{font-size:23px;white-space:nowrap}
 @media(max-width:520px){.logo{font-size:19px}.hero h1{font-size:clamp(76px,16vw,120px)}}
 .stage{height:auto!important;min-height:0!important;perspective:none!important;padding:0 max(16px,calc((100vw - 1240px)/2));overflow:visible!important}
@@ -530,6 +531,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 @media(max-width:900px){.drive-grid.ads-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:480px){.ad-cover{aspect-ratio:4/5}.ad-play{width:48px;height:48px}.ad-meta strong{font-size:17px}}
 
+
+/* v16 fixes: showreel on phones, ad titles */
+@media(max-width:600px){.reel.h .pp{width:56px;height:56px;font-size:15px;left:auto;top:auto;right:16px;bottom:18px;transform:none}.reel.h .pp::after{inset:-8px}.reel.h:hover .pp{transform:scale(1.08)}.reel.h .t{left:16px;right:86px;bottom:16px}.reel.h .t>.mono{display:none}.reel .rhud{top:12px;left:12px;right:12px}.reel.h h3{font-size:clamp(26px,8.4vw,40px)}}
+.ad-meta{display:block}.ad-meta strong{font-size:clamp(17px,1.55vw,22px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ad-meta>.mono{display:block;margin-top:9px}
 </style>
 </head><body>
 
@@ -562,7 +567,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <li><a href="#reels-sec">Showreel</a></li>
     </ul>
     <div class="nav-r">
-      <button id="snd" type="button" class="on" aria-pressed="true" aria-label="Toggle sound effects" title="Sound effects enabled — click to turn off"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="mono" id="sndl">SFX ON</span></button>
+      <button id="snd" type="button" class="on" aria-pressed="true" aria-label="Toggle sound effects" title="Sound effects enabled. Click to turn off"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="mono" id="sndl">SFX ON</span></button>
       <a class="btn" href="#contact" data-mag>Contact</a>
     </div>
   </div>
@@ -686,7 +691,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <div class="eyebrow mono" data-scr>Commercial editing</div>
         <h2 class="mask"><span>Ads that</span></h2><h2 class="mask"><span class="amb">make an impact.</span></h2>
       </div>
-      <p>Short promotional edits for social campaigns and digital products — paced to communicate the idea quickly. Select a project to watch the original video.</p>
+      <p>Short promotional edits for social campaigns and digital products, paced to communicate the idea quickly. Select a project to watch the original video.</p>
     </div>
     <div class="ad-grid" id="ad-grid"></div>
   </div>
@@ -901,9 +906,10 @@ const SHORTS = [
   {id:"n96CfgtNKqE", title:"I Can't Believe Diane Rode This"}
 ];
 const AI = [
-  {id:"1R7n6NZsQCbAVoAoPFmTueMFdm_tHhBTo", title:"The Last Goodbye", tags:"Story · Score · Grade"},
-  {id:"1UZm2RoN27rQhzETt0Uy9Wknk9bnlbAO3", title:"Cyberpunk Film", tags:"Action · Sound design · VFX"},
-  {id:"1HSPYo0Voinonj_-toxgsyHKpD6HgbrsR", title:"UNI eCard", tags:"Product · AI video · Concept"}
+  {id:"1R7n6NZsQCbAVoAoPFmTueMFdm_tHhBTo", title:"The Last Goodbye", tags:"Story · Score · Grade", poster:"assets/images/last-goodbye.webp"},
+  {id:"1UZm2RoN27rQhzETt0Uy9Wknk9bnlbAO3", title:"Cyberpunk Film", tags:"Action · Sound design · VFX", poster:"assets/images/cyberpunk.webp"},
+  {id:"1ZTmPcK9IyfIDxFp98s3F_-TXfh8oDojt", title:"Samurai", tags:"Period drama · Atmosphere · Grade"},
+  {id:"1HSPYo0Voinonj_-toxgsyHKpD6HgbrsR", title:"UNI eCard", tags:"Product · AI video · Concept", poster:"assets/images/uni-ecard.webp"}
 ];
 /* Media files stream from Google Drive. Only lightweight local preview images are stored here. */
 const SHOWREEL = {id:"1v2OB5_9U-lkft2P_VCnB2Ns1NYxLQBnZ", title:"Creative Portfolio", len:"FULL VIDEO"};
@@ -1000,13 +1006,20 @@ const CASES=[
   challenge:"Bring separate generated shots together into a consistent narrative.",
   did:["Developed sequences from AI-generated video","Edited the scenes for pacing and continuity","Finished the story with sound and color work"],
   result:"Watch the completed film using the original Google Drive link."},
- {key:"shadow",cats:["ai"],title:"Shadow Run · Cyberpunk Film",line:"A completed cyberpunk action film set in a neon-lit futuristic city — AI video edited as a cinematic sequence.",
+ {key:"shadow",cats:["ai"],title:"Shadow Run · Cyberpunk Film",line:"A completed cyberpunk action film set in a neon-lit futuristic city: AI video edited as a cinematic sequence.",
   client:"Personal creative film",format:"16:9 · AI action film",tools:"AI video, editing, sound design",art:"neon",seed:2,
   media:[{kind:"drive",id:"1UZm2RoN27rQhzETt0Uy9Wknk9bnlbAO3",label:"Watch Shadow Run (Cyberpunk Film)"}],
   brief:"Create a fast-paced futuristic action film with a recognizable visual style and connected scenes.",
   challenge:"Keep the main character, setting and action coherent from one AI-generated shot to the next.",
   did:["Developed a distinctive purple-neon cyberpunk visual direction","Assembled action shots into a continuous cinematic edit","Used pacing and sound to make the sequence feel like a finished film"],
   result:"Full Cyberpunk Film available to watch on Google Drive."},
+ {key:"samurai",cats:["ai"],title:"Samurai · AI Film",line:"A feudal-Japan AI short: a lone samurai walks through a burning fortress under a full moon.",
+  client:"Personal creative film",format:"16:9 · AI short film",tools:"AI video, DaVinci Resolve, sound design",art:"neon",seed:3,
+  media:[{kind:"drive",id:"1ZTmPcK9IyfIDxFp98s3F_-TXfh8oDojt",label:"Watch Samurai"}],
+  brief:"Build a dark, atmospheric period piece from AI-generated shots, with a clear lead character and a cinematic mood.",
+  challenge:"Keep the samurai, the armor and the burning-castle setting consistent from one generated shot to the next.",
+  did:["Directed the shots around one recurring character and location","Cut for slow, heavy pacing that matches the mood","Unified fire, moonlight and smoke with a single color pass"],
+  result:"Watch the complete film through its original Google Drive link."},
  {key:"thumbs",cats:["design"],title:"Thumbnails",line:"Thumbnails built for click-through: one idea, readable at phone size.",
   client:"YouTube channels",format:"1280 × 720",tools:"Canva Pro, AI images",art:"thumbs",seed:0,media:[{kind:"folder",id:"thumbs",label:"Open the gallery"}],
   brief:"Thumbnails that earn the click without misleading the viewer.",
@@ -1043,7 +1056,7 @@ const SFX = {
     }catch(e){ return false; }
   },
   set(v){ if(v && !this.init()) v=false; this.on=v; if(v&&this.ctx.state==='suspended') this.ctx.resume();
-    const b=$('#snd'); b.classList.toggle('on',v); b.setAttribute('aria-pressed',v); $('#sndl').textContent=v?'SFX ON':'SFX OFF'; b.title=v?'Sound effects enabled — click to turn off':'Sound effects off — click to turn on'; },
+    const b=$('#snd'); b.classList.toggle('on',v); b.setAttribute('aria-pressed',v); $('#sndl').textContent=v?'SFX ON':'SFX OFF'; b.title=v?'Sound effects enabled. Click to turn off':'Sound effects off. Click to turn on'; },
   ok(name,gap){ if(!this.on||!this.ctx) return false; const n=performance.now(); if(gap && n-(this.last[name]||0)<gap) return false; this.last[name]=n; return true; },
   env(g,t,a,peak,d){ g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(peak,t+a); g.gain.exponentialRampToValueAtTime(0.0001,t+a+d); },
   noise(o){ const c=this.ctx,t=c.currentTime+(o.delay||0); const s=c.createBufferSource(); s.buffer=this.nb; s.loop=true;
@@ -1075,10 +1088,21 @@ function openIris(withSound){
   if(withSound){ SFX.beep(); setTimeout(()=>{SFX.impact();SFX.whoosh();},120); }
   document.body.classList.remove('locked');
   const max=Math.hypot(innerWidth,innerHeight);
-  if(window.gsap){ gsap.to(gate,{'--r':max+'px',duration:1.3,ease:'expo.inOut',onComplete:()=>gate.classList.add('gone')}); setTimeout(intro,350); }
+  if(window.gsap){ gsap.to(gate,{'--r':max+'px',duration:1.3,ease:'expo.inOut',onComplete:()=>gate.classList.add('gone')}); setTimeout(intro,350); setTimeout(()=>{ gsap.killTweensOf(gate); gate.classList.add('gone'); },1600); }
   else { gate.classList.add('gone'); }
 }
-gate.classList.add('gone'); // Recruiters can browse immediately; sound defaults on after their first interaction.
+if(reduce){ gate.classList.add('gone'); }
+else{
+  document.body.classList.add('locked');
+  const num=$('#lnum'), sw=$('.leader .sweep'); let t0=performance.now();
+  (function f(t){ const e=(t-t0)/600; sw.style.setProperty('--p',((e%1)*360)+'deg');
+    const k=Math.max(1,3-Math.floor(e)); num.textContent=k;
+    if(e<3 && !gate.classList.contains('gone')) requestAnimationFrame(f); else { num.textContent='Z'; gate.classList.add('ready'); } })(t0);
+  $('#enter').addEventListener('click',()=>openIris(true));
+  $('#silent').addEventListener('click',()=>openIris(false));
+  gate.addEventListener('keydown',e=>{ if(e.key==='Escape') openIris(false); });
+  setTimeout(()=>$('#enter').focus({preventScroll:true}),1200);
+}
 
 /* =====================================================================
    TEXT FX
@@ -1098,7 +1122,7 @@ function intro(){
   gsap.from('#title .ch',{yPercent:115,rotate:8,duration:1.2,ease:'expo.out',stagger:.04});
   gsap.from('.hero .sub,.hero .cta,.hud',{y:26,duration:1.1,ease:'expo.out',stagger:.08,delay:.3});
 }
-intro();
+if(reduce) intro();
 
 /* statement: words light up as you scroll */
 (() => {
@@ -1323,7 +1347,7 @@ $('#aigrid').innerHTML=AI.map((v,i)=>`
     <span class="badge mono">AI · Directed &amp; edited</span>
     <span class="t"><span class="mono">${v.tags}</span><h3 data-g="${v.title}">${v.title}</h3></span>
   </button>`).join('');
-$$('#aigrid .img').forEach((el,i)=>bgImg(el,[i===0?'assets/images/last-goodbye.webp':i===1?'assets/images/cyberpunk.webp':'assets/images/uni-ecard.webp']));
+$$('#aigrid .img').forEach((el,i)=>bgImg(el,[AI[i].poster,`https://drive.google.com/thumbnail?id=${AI[i].id}&sz=w1280`].filter(Boolean)));
 
 $('#ad-grid').innerHTML=ADS.map((v,i)=>`<a class="ad-item" href="https://drive.google.com/file/d/${v.id}/view" target="_blank" rel="noopener noreferrer" aria-label="Watch ${v.title}">
   <span class="ad-cover" style="--ad-no:${i}"><span class="ad-number mono">AD / ${String(i+1).padStart(2,'0')}</span><span class="ad-play">▶</span><img src="${v.poster}" alt="Preview frame from ${v.title}" loading="lazy" decoding="async"></span>

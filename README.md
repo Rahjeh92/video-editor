@@ -1,4 +1,4 @@
-# Zain Rahjeh — Video Editor & Creative Portfolio
+# Zain Rahjeh: Video Editor & Creative Portfolio
 
 **A cinematic, interactive portfolio showcasing my work in video editing, storytelling, AI filmmaking, motion graphics, and visual design.**
 
@@ -12,13 +12,13 @@ The result is a responsive, cinematic portfolio with animated transitions, inter
 
 ## What's inside
 
-- **Storytelling & long-form editing** — selected YouTube videos and narrative-driven edits.
-- **Short-form content** — Reels and Shorts made for social platforms.
-- **AI films & VFX** — creative experiments and finished AI-assisted film projects, including *Shadow Run / Cyberpunk Film*.
-- **Ads & commercial work** — promotional videos and social media advertisements.
-- **Color grading & motion** — visual treatment, graphics, and post-production techniques.
-- **Thumbnails & design** — a selection of my graphic and YouTube thumbnail designs.
-- **Creative showreel** — an overview of my editing style and creative range.
+- **Storytelling & long-form editing**: selected YouTube videos and narrative-driven edits.
+- **Short-form content**: Reels and Shorts made for social platforms.
+- **AI films & VFX**: creative experiments and finished AI-assisted film projects, including *Shadow Run / Cyberpunk Film* and *Samurai*.
+- **Ads & commercial work**: promotional videos and social media advertisements.
+- **Color grading & motion**: visual treatment, graphics, and post-production techniques.
+- **Thumbnails & design**: a selection of my graphic and YouTube thumbnail designs.
+- **Creative showreel**: an overview of my editing style and creative range.
 
 ## Website features
 
