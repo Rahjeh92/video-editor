@@ -945,7 +945,7 @@ const IMAGES = {thumbs:THUMBNAILS.map(v=>v.image), ads:ADS.map(v=>v.poster)};
    CASE FILES · the story behind each project
    media kinds: yt (YouTube id, t = start), drive (Drive file id), folder (thumbs|ads), link (url), none
    ===================================================================== */
-const CATS=[{k:"all",l:"All"},{k:"story",l:"Storytelling"},{k:"shorts",l:"Shorts & Reels"},{k:"auto",l:"Automotive"},{k:"ads",l:"Ads & Explainers"},{k:"ai",l:"AI Films"},{k:"design",l:"Design"}];
+const CATS=[{k:"all",l:"All"},{k:"story",l:"Storytelling"},{k:"shorts",l:"Shorts & Reels"},{k:"auto",l:"Automotive"},{k:"yt",l:"YouTube & Gaming"},{k:"ads",l:"Ads & Explainers"},{k:"ai",l:"AI Films"},{k:"design",l:"Design"}];
 const CASES=[
  {key:"reel",cats:["story","ai","design"],title:"Creative Editing Showreel",line:"A cinematic look at my creative editing, transitions, sound design and motion work.",
   client:"Personal portfolio",format:"Creative portfolio video",tools:"DaVinci Resolve, Fusion, Fairlight",art:"neon",seed:4,
@@ -978,6 +978,20 @@ const CASES=[
   challenge:"A wrong turn stretched a short hike into five hours of footage.",
   did:["Used the detour as the story arc instead of cutting it out","Kept real reactions and complete thoughts, trimmed dead air and false starts","Forest B-roll covers the edits and gives the trail room to breathe","Different cameras balanced into one consistent look"],
   result:"A 34-minute episode that plays like a short adventure film."},
+ {key:"snowreel",cats:["shorts","story"],title:"Snow Canyon · Instagram Reel",line:"The Snow Canyon episode recut as a vertical travel reel for Instagram.",
+  client:"US travel channel",format:"9:16 · Instagram Reel",tools:"DaVinci Resolve",art:"land",seed:4,
+  media:[{kind:"drive",id:"1x0gDaldhuj0E1_kzvN1EwCAETEksRKeQ",label:"Watch the reel"}],
+  brief:"Turn a long-form desert ride into a short vertical piece that works on its own in the Instagram feed.",
+  challenge:"Widescreen action-camera footage had to read clearly on a phone screen without losing the scenery.",
+  did:["Picked the strongest moments from the finished episode","Reframed 16:9 shots for 9:16 with a soft background fill","Cut to a fast, music-led rhythm for social viewing"],
+  result:"A vertical reel that sends viewers back to the full episode."},
+ {key:"folsomreel",cats:["shorts","story"],title:"Folsom · Instagram Reel",line:"The Lake Natoma ride condensed into a vertical reel for Instagram.",
+  client:"US travel channel",format:"9:16 · Instagram Reel",tools:"DaVinci Resolve",art:"land",seed:5,
+  media:[{kind:"drive",id:"1KdtB6_I5NfBTxfQwo8diJnhwQIDXTZPh",label:"Watch the reel"}],
+  brief:"Give the Folsom episode a short vertical version for Instagram.",
+  challenge:"Keep the lake, the trail and the river views readable after reframing wide footage to a tall frame.",
+  did:["Selected highlights from the approved episode","Reframed for 9:16 with a blurred background fill","Matched color and sound to the long-form master"],
+  result:"A ready-to-post reel consistent with the full episode."},
  {key:"driftreel",cats:["auto","shorts"],title:"Car Drift · Short Edit",line:"A vertical drift-gaming montage built for fast-paced viewing and energetic cuts.",
   client:"Creative video-editing work",format:"9:16 · 1:00",tools:"DaVinci Resolve",art:"drift",seed:0,
   media:[{kind:"drive",id:"1RI0T4Tag8lcZ0Afy2-HYHqrnB7bOkrzT",label:"Watch full Car Drift edit"}],
@@ -985,13 +999,20 @@ const CASES=[
   challenge:"Shape gameplay footage into a concise visual sequence that works on a phone screen.",
   did:["Selected visually dynamic racing shots for a vertical edit","Built a fast-moving sequence with a clear rhythm","Prepared the final piece for short-form viewing"],
   result:"Watch the full edit through the original Google Drive link."},
- {key:"driftfilm",cats:["auto"],title:"Drift Edit · YouTube",line:"A longer-form drift edit available in its original video format.",
+ {key:"driftfilm",cats:["auto","yt"],title:"Drift Edit · YouTube",line:"A longer-form drift edit available in its original video format.",
   client:"Video editing project",format:"16:9 · long-form",tools:"Video editing, pacing, audio",art:"drift",seed:1,
   media:[{kind:"drive",id:"1bGGTWSMKUqaA2AbIWNkT3wS1TxsP83mg",label:"Watch full drift edit"}],
   brief:"Create a longer drift-focused video for a widescreen viewing experience.",
   challenge:"Maintain energy and clarity across a longer edit.",
   did:["Structured the footage for continuous viewing","Used editing rhythm to support the action","Delivered the full version as a standalone video"],
   result:"Watch the original completed edit via Google Drive."},
+ {key:"acgaming",cats:["yt"],noThumb:true,title:"Assassin's Creed Syndicate · Gaming Edit",line:"A YouTube gaming episode shaped from raw gameplay into a watchable story.",
+  client:"YouTube gaming content",format:"16:9 · long-form",tools:"DaVinci Resolve, Fairlight",art:"neon",seed:5,
+  media:[{kind:"drive",id:"1bV91tgGe95R-RA2iEqKUQbbkuEsmF-0b",label:"Watch the gaming edit"}],
+  brief:"Edit a full gameplay session into an episode that keeps viewers watching.",
+  challenge:"Long recordings contain a lot of repetition, so the pacing has to stay tight without losing the key moments.",
+  did:["Cut down long gameplay to the moments that matter","Built rhythm with music, sound effects and on-screen accents","Balanced game audio and voice for clear listening"],
+  result:"Watch the finished episode through its Google Drive link."},
  {key:"explainer",cats:["ads","ai"],title:"Card Connect · Product Ad",line:"A playful game-show-style product video introducing a digital business card.",
   client:"Commercial video project",format:"16:9 · 0:52",tools:"Video editing, AI-supported visuals & audio",art:"show",seed:0,
   media:[{kind:"drive",id:"1HSPYo0Voinonj_-toxgsyHKpD6HgbrsR",label:"Watch full product video"}],
@@ -1020,6 +1041,20 @@ const CASES=[
   challenge:"Keep the samurai, the armor and the burning-castle setting consistent from one generated shot to the next.",
   did:["Directed the shots around one recurring character and location","Cut for slow, heavy pacing that matches the mood","Unified fire, moonlight and smoke with a single color pass"],
   result:"Watch the complete film through its original Google Drive link."},
+ {key:"koblenz",cats:["shorts","ai"],title:"Koblenz · AI Travel Reel",line:"A vertical AI travel reel about Koblenz, where the Rhine and the Moselle meet.",
+  client:"Personal creative project",format:"9:16 · Instagram Reel",tools:"AI image & video tools, DaVinci Resolve",art:"neon",seed:6,
+  media:[{kind:"drive",id:"17JWCc-H3UBu5eQy232kkJMSLeGtvuJ4M",label:"Watch the reel"}],
+  brief:"Create a short, eye-catching reel that presents Koblenz in an illustrated travel-poster style.",
+  challenge:"Keep AI-generated scenes consistent in style so the reel feels like one piece.",
+  did:["Generated the visuals around one poster-like look","Edited the shots to music in a vertical format","Finished the color for a warm, unified feel"],
+  result:"A vertical reel built for Instagram."},
+ {key:"halloween",cats:["shorts"],title:"Halloween · Photo Reel",line:"A short seasonal reel for social media, built from photos and phone footage.",
+  client:"Social media content",format:"9:16 · Instagram Reel",tools:"DaVinci Resolve",art:"neon",seed:7,
+  media:[{kind:"drive",id:"1SfAApekzH5MHPYs2XLAtZkEFisL2NF2l",label:"Watch the reel"}],
+  brief:"Turn a set of Halloween photos and clips into a quick, fun reel.",
+  challenge:"Photos and phone clips of different quality had to feel like one continuous piece.",
+  did:["Ordered the photos and clips into a simple story","Timed every cut and motion to the music","Matched color across the shots"],
+  result:"A ready-to-post seasonal reel."},
  {key:"thumbs",cats:["design"],title:"Thumbnails",line:"Thumbnails built for click-through: one idea, readable at phone size.",
   client:"YouTube channels",format:"1280 × 720",tools:"Canva Pro, AI images",art:"thumbs",seed:0,media:[{kind:"folder",id:"thumbs",label:"Open the gallery"}],
   brief:"Thumbnails that earn the click without misleading the viewer.",
@@ -1382,7 +1417,7 @@ let rto; addEventListener('resize',()=>{clearTimeout(rto);rto=setTimeout(()=>{dr
    CASE FILES · filters + drawer
    ===================================================================== */
 const CASE_POSTERS = {reel:'assets/videos/zain-creative-showreel.webp',aifilms:'assets/images/last-goodbye.webp',shadow:'assets/images/cyberpunk.webp',thumbs:'assets/images/thumbnails-collection.webp',ads:'assets/images/ads-collection.webp',driftreel:'assets/images/car-drift.webp',driftfilm:'assets/images/drift-film-preview.webp',explainer:'assets/images/card-connect.webp'};
-const thumbOf=c=>{ if(CASE_POSTERS[c.key]) return [CASE_POSTERS[c.key]]; const m=c.media[0]; if(!m) return [];
+const thumbOf=c=>{ if(c.noThumb) return []; if(CASE_POSTERS[c.key]) return [CASE_POSTERS[c.key]]; const m=c.media[0]; if(!m) return [];
   if(m.kind==='local') return ['assets/videos/zain-creative-showreel.webp'];
   if(m.kind==='yt') return yt(m.id); if(m.kind==='drive') return [`https://drive.google.com/thumbnail?id=${m.id}&sz=w1200`];
   if(m.kind==='folder'&&IMAGES[m.id].length) return [IMAGES[m.id][0]]; return []; };
