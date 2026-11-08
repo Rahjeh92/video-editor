@@ -14,7 +14,6 @@ The result is a responsive, cinematic portfolio with animated transitions, inter
 
 - **Storytelling & long-form editing**: selected YouTube videos and narrative-driven edits.
 - **Short-form content**: Reels and Shorts made for social platforms, including Instagram travel reels (Snow Canyon, Folsom, Koblenz) and a Halloween photo reel.
-- **YouTube & gaming**: long-form drift and gaming edits, such as *Assassin's Creed Syndicate*.
 - **AI films & VFX**: creative experiments and finished AI-assisted film projects, including *Shadow Run / Cyberpunk Film* and *Samurai*.
 - **Ads & commercial work**: promotional videos and social media advertisements.
 - **Color grading & motion**: visual treatment, graphics, and post-production techniques.

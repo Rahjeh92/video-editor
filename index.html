@@ -912,7 +912,7 @@ const AI = [
   {id:"1HSPYo0Voinonj_-toxgsyHKpD6HgbrsR", title:"UNI eCard", tags:"Product · AI video · Concept", poster:"assets/images/uni-ecard.webp"}
 ];
 /* Media files stream from Google Drive. Only lightweight local preview images are stored here. */
-const SHOWREEL = {id:"1v2OB5_9U-lkft2P_VCnB2Ns1NYxLQBnZ", title:"Creative Portfolio", len:"FULL VIDEO"};
+const SHOWREEL = {id:"1v2OB5_9U-lkft2P_VCnB2Ns1NYxLQBnZ", src:"assets/videos/BrandZ_Portfolio_Reel_Full.mp4", poster:"assets/videos/zain-creative-showreel.webp", title:"Creative Portfolio", len:"FULL VIDEO"};
 const PF_REEL  = {id:"", title:"Before / After", len:"0:45"};
 const FOLDERS = {thumbs:"1CZejKipXV2M068MMwsD3Hr8v_J2dCvIS", ads:"1EZLK0__q6NpJkLkvu8XfxT_Gb905UdBU"};
 const THUMBNAILS = [
@@ -945,11 +945,11 @@ const IMAGES = {thumbs:THUMBNAILS.map(v=>v.image), ads:ADS.map(v=>v.poster)};
    CASE FILES · the story behind each project
    media kinds: yt (YouTube id, t = start), drive (Drive file id), folder (thumbs|ads), link (url), none
    ===================================================================== */
-const CATS=[{k:"all",l:"All"},{k:"story",l:"Storytelling"},{k:"shorts",l:"Shorts & Reels"},{k:"auto",l:"Automotive"},{k:"yt",l:"YouTube & Gaming"},{k:"ads",l:"Ads & Explainers"},{k:"ai",l:"AI Films"},{k:"design",l:"Design"}];
+const CATS=[{k:"all",l:"All"},{k:"story",l:"Storytelling"},{k:"shorts",l:"Shorts & Reels"},{k:"auto",l:"Automotive"},{k:"ads",l:"Ads & Explainers"},{k:"ai",l:"AI Films"},{k:"design",l:"Design"}];
 const CASES=[
  {key:"reel",cats:["story","ai","design"],title:"Creative Editing Showreel",line:"A cinematic look at my creative editing, transitions, sound design and motion work.",
   client:"Personal portfolio",format:"Creative portfolio video",tools:"DaVinci Resolve, Fusion, Fairlight",art:"neon",seed:4,
-  media:[{kind:"drive",id:"1v2OB5_9U-lkft2P_VCnB2Ns1NYxLQBnZ",label:"Watch full portfolio on Drive"}],
+  media:[{kind:"showreel",id:"reel",label:"Play the showreel"}],
   brief:"Present a focused overview of my visual storytelling and post-production style.",
   challenge:"Connect diverse visual styles with consistent pacing, rhythm and finishing.",
   did:["Selected cinematic moments from creative editing work","Built transitions, graphics and motion with an intentional visual rhythm","Balanced sound, color and pacing for a unified viewing experience"],
@@ -999,20 +999,13 @@ const CASES=[
   challenge:"Shape gameplay footage into a concise visual sequence that works on a phone screen.",
   did:["Selected visually dynamic racing shots for a vertical edit","Built a fast-moving sequence with a clear rhythm","Prepared the final piece for short-form viewing"],
   result:"Watch the full edit through the original Google Drive link."},
- {key:"driftfilm",cats:["auto","yt"],title:"Drift Edit · YouTube",line:"A longer-form drift edit available in its original video format.",
+ {key:"driftfilm",cats:["auto"],title:"Drift Edit · YouTube",line:"A longer-form drift edit available in its original video format.",
   client:"Video editing project",format:"16:9 · long-form",tools:"Video editing, pacing, audio",art:"drift",seed:1,
   media:[{kind:"drive",id:"1bGGTWSMKUqaA2AbIWNkT3wS1TxsP83mg",label:"Watch full drift edit"}],
   brief:"Create a longer drift-focused video for a widescreen viewing experience.",
   challenge:"Maintain energy and clarity across a longer edit.",
   did:["Structured the footage for continuous viewing","Used editing rhythm to support the action","Delivered the full version as a standalone video"],
   result:"Watch the original completed edit via Google Drive."},
- {key:"acgaming",cats:["yt"],noThumb:true,title:"Assassin's Creed Syndicate · Gaming Edit",line:"A YouTube gaming episode shaped from raw gameplay into a watchable story.",
-  client:"YouTube gaming content",format:"16:9 · long-form",tools:"DaVinci Resolve, Fairlight",art:"neon",seed:5,
-  media:[{kind:"drive",id:"1bV91tgGe95R-RA2iEqKUQbbkuEsmF-0b",label:"Watch the gaming edit"}],
-  brief:"Edit a full gameplay session into an episode that keeps viewers watching.",
-  challenge:"Long recordings contain a lot of repetition, so the pacing has to stay tight without losing the key moments.",
-  did:["Cut down long gameplay to the moments that matter","Built rhythm with music, sound effects and on-screen accents","Balanced game audio and voice for clear listening"],
-  result:"Watch the finished episode through its Google Drive link."},
  {key:"explainer",cats:["ads","ai"],title:"Card Connect · Product Ad",line:"A playful game-show-style product video introducing a digital business card.",
   client:"Commercial video project",format:"16:9 · 0:52",tools:"Video editing, AI-supported visuals & audio",art:"show",seed:0,
   media:[{kind:"drive",id:"1HSPYo0Voinonj_-toxgsyHKpD6HgbrsR",label:"Watch full product video"}],
@@ -1417,7 +1410,7 @@ let rto; addEventListener('resize',()=>{clearTimeout(rto);rto=setTimeout(()=>{dr
    CASE FILES · filters + drawer
    ===================================================================== */
 const CASE_POSTERS = {reel:'assets/videos/zain-creative-showreel.webp',aifilms:'assets/images/last-goodbye.webp',shadow:'assets/images/cyberpunk.webp',thumbs:'assets/images/thumbnails-collection.webp',ads:'assets/images/ads-collection.webp',driftreel:'assets/images/car-drift.webp',driftfilm:'assets/images/drift-film-preview.webp',explainer:'assets/images/card-connect.webp'};
-const thumbOf=c=>{ if(c.noThumb) return []; if(CASE_POSTERS[c.key]) return [CASE_POSTERS[c.key]]; const m=c.media[0]; if(!m) return [];
+const thumbOf=c=>{ if(CASE_POSTERS[c.key]) return [CASE_POSTERS[c.key]]; const m=c.media[0]; if(!m) return [];
   if(m.kind==='local') return ['assets/videos/zain-creative-showreel.webp'];
   if(m.kind==='yt') return yt(m.id); if(m.kind==='drive') return [`https://drive.google.com/thumbnail?id=${m.id}&sz=w1200`];
   if(m.kind==='folder'&&IMAGES[m.id].length) return [IMAGES[m.id][0]]; return []; };
@@ -1446,6 +1439,7 @@ function openCase(i){
   const c=CASES[i]; caseIdx=i; const box=$('#case'), pan=$('#cpanel');
   const nx=CASES[(i+1)%CASES.length];
   const btns=c.media.map((m,j)=>{
+    if(m.kind==='showreel') return `<button class="btn" type="button" data-open="showreel" data-id="reel" data-title="${c.title}">▶ ${m.label}</button>`;
     if(m.kind==='local') return `<button class="btn" type="button" data-open="local" data-id="${m.id}" data-title="${c.title}">▶ ${m.label}</button>`;
     if(m.kind==='yt') return `<button class="btn" type="button" data-open="yt" data-id="${m.id}" data-t="${m.t||0}" data-title="${c.title}">▶ ${m.label}</button>`;
     if(m.kind==='drive') return `<a class="btn${j?' ghost':''}" href="https://drive.google.com/file/d/${m.id}/view" target="_blank" rel="noopener noreferrer" aria-label="${m.label} (opens Google Drive)">▶ ${m.label} ↗</a>`;
@@ -1480,6 +1474,18 @@ $('#case').addEventListener('click',e=>{ if(e.target.id==='case') closeCase(); }
    ===================================================================== */
 const lb=$('#lb'), lbm=$('#lbm');
 function openLB(kind,id,title,t,ev){
+  if(kind==='showreel'){
+    const r=ev&&ev.currentTarget?ev.currentTarget.getBoundingClientRect():null;
+    lb.style.setProperty('--ox',(r?r.left+r.width/2:innerWidth/2)+'px');lb.style.setProperty('--oy',(r?r.top+r.height/2:innerHeight/2)+'px');
+    lbm.className='lb-media';
+    const drivePlayer=()=>{ const f=document.createElement('iframe'); f.src=`https://drive.google.com/file/d/${SHOWREEL.id}/preview`; f.allow='autoplay; fullscreen; encrypted-media'; f.allowFullscreen=true; f.title=SHOWREEL.title; lbm.replaceChildren(f); };
+    const v=document.createElement('video'); v.src=SHOWREEL.src; v.poster=SHOWREEL.poster; v.controls=true; v.autoplay=true; v.playsInline=true; v.preload='auto';
+    v.addEventListener('error',drivePlayer,{once:true}); lbm.replaceChildren(v);
+    v.play().catch(()=>{ v.muted=true; v.play().catch(()=>{}); });
+    $('#lbt').textContent=title; const a=$('#lbo'); a.href=`https://drive.google.com/file/d/${SHOWREEL.id}/view`; a.textContent='Open on Drive ↗';
+    lb.hidden=false;void lb.offsetWidth;lb.classList.add('open');document.body.classList.add('locked');
+    setTimeout(()=>$('#lbClose').focus({preventScroll:true}),100); return;
+  }
   if(kind==='yt'||kind==='short'||kind==='drive'||kind==='list'){
     const url=kind==='yt'?`https://www.youtube.com/watch?v=${id}&t=${t||0}s`:kind==='short'?`https://www.youtube.com/shorts/${id}`:kind==='drive'?`https://drive.google.com/file/d/${id}/view`:`https://www.youtube.com/watch_videos?video_ids=${id}`;
     window.open(url,'_blank','noopener,noreferrer'); return;
@@ -1495,7 +1501,7 @@ function openLB(kind,id,title,t,ev){
   setTimeout(()=>$('#lbClose').focus({preventScroll:true}),100);
 }
 function closeLB(){ if(lb.hidden) return; lb.classList.remove('open'); SFX.whoosh(true); if($('#case').hidden) document.body.classList.remove('locked');
-  lbm.querySelector('video')?.pause(); setTimeout(()=>{ lb.hidden=true; lbm.innerHTML=''; },reduce?0:450); }
+  lbm.querySelector('video')?.pause(); lbm.querySelector('iframe')&&(lbm.querySelector('iframe').src='about:blank'); setTimeout(()=>{ lb.hidden=true; lbm.innerHTML=''; },reduce?0:450); }
 $('#lbClose').addEventListener('click',closeLB);
 lb.addEventListener('click',e=>{ if(e.target===lb||e.target.classList.contains('lb-in')) closeLB(); });
 addEventListener('keydown',e=>{ if(e.key!=='Escape') return; if(!lb.hidden) closeLB(); else closeCase(); });
@@ -1503,7 +1509,7 @@ let dragMoved=false;
 document.addEventListener('click',e=>{ const el=e.target.closest('[data-open]'); if(!el) return; if(el.closest('#ring')&&dragMoved) return;
   openLB(el.dataset.open,el.dataset.id,el.dataset.title,+el.dataset.t||0,{currentTarget:el}); });
 document.addEventListener('keydown',e=>{ if((e.key==='Enter'||e.key===' ')&&e.target.matches('.frame[data-open]')){ e.preventDefault(); e.target.click(); } });
-const playReel=e=>openLB('drive',SHOWREEL.id,SHOWREEL.title,0,e);
+const playReel=e=>openLB('showreel',SHOWREEL.id,SHOWREEL.title,0,e);
 $('#reel').addEventListener('click',playReel);
 
 /* =====================================================================
