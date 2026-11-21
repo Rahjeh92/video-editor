@@ -535,6 +535,51 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 /* v16 fixes: showreel on phones, ad titles */
 @media(max-width:600px){.reel.h .pp{width:56px;height:56px;font-size:15px;left:auto;top:auto;right:16px;bottom:18px;transform:none}.reel.h .pp::after{inset:-8px}.reel.h:hover .pp{transform:scale(1.08)}.reel.h .t{left:16px;right:86px;bottom:16px}.reel.h .t>.mono{display:none}.reel .rhud{top:12px;left:12px;right:12px}.reel.h h3{font-size:clamp(26px,8.4vw,40px)}}
 .ad-meta{display:block}.ad-meta strong{font-size:clamp(17px,1.55vw,22px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ad-meta>.mono{display:block;margin-top:9px}
+
+/* Client page + Shorts with thumbnails */
+.client-cta{display:flex;margin-top:26px}.client-cta.center{justify-content:center;margin-top:18px}
+.client-btn{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px 14px;padding:14px 22px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03);color:var(--fg);cursor:pointer;font:inherit;text-align:left;transition:border-color .2s,background .2s}
+.client-btn:hover,.client-btn:focus-visible{border-color:var(--amber);background:rgba(255,155,61,.08)}
+.client-btn .mono{color:var(--amber);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.client-btn b{font:900 22px/1 var(--display);text-transform:uppercase}
+.client-btn small{color:var(--mute);font-size:14px}
+.cl-link{background:none;border:0;padding:0;color:var(--amber);font:inherit;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+#ring{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.short-card{position:relative;display:block;aspect-ratio:9/16;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,#1c2130,#0a0d14);text-decoration:none;color:var(--fg);transition:transform .3s,border-color .3s}
+.short-card .img{position:absolute;inset:0;background:var(--im) center/cover no-repeat}
+.short-card:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.88),rgba(0,0,0,.15) 48%,transparent 70%,rgba(0,0,0,.5));pointer-events:none}
+.short-card .top{position:absolute;top:12px;left:12px;right:12px;z-index:2;display:flex;justify-content:space-between;gap:8px;font-size:10.5px;letter-spacing:.04em}
+.short-card .top>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.short-card .views{background:rgba(0,0,0,.6);padding:4px 8px;border-radius:999px;color:var(--amber);white-space:nowrap}
+.short-card .bot{position:absolute;left:14px;right:14px;bottom:14px;z-index:2}
+.short-card strong{display:block;font:900 clamp(18px,1.75vw,25px)/1.02 var(--display);text-transform:uppercase;text-wrap:balance}
+.short-card .ep{display:block;margin-top:8px;color:var(--amber);font-size:11px}
+.short-card:hover,.short-card:focus-visible{transform:translateY(-6px);border-color:var(--amber)}
+@media(max-width:700px){#ring{grid-template-columns:1fr 1fr!important;gap:10px}.short-card strong{font-size:17px}.short-card .top{font-size:9.5px;top:9px;left:9px;right:9px}.short-card .bot{left:10px;right:10px;bottom:10px}}
+.cl-hero{padding:6px 0 26px;border-bottom:1px solid var(--line)}
+.cl-hero .amb{color:var(--amber)}
+.cl-hero h2{font:900 clamp(42px,7vw,80px)/.9 var(--display);text-transform:uppercase;margin:12px 0 14px}
+.cl-hero p{color:var(--mute);max-width:60ch;font-size:17px;line-height:1.55}
+.cl-stats{display:flex;gap:30px;flex-wrap:wrap;margin:22px 0}
+.cl-stats b{display:block;font:900 38px/1 var(--display);color:var(--amber)}
+.cl-stats .mono{font-size:11px;color:var(--mute)}
+.cl-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:34px 0 14px}
+.cl-h h3{font:900 30px/1 var(--display);text-transform:uppercase}
+.cl-h .mono{font-size:11px;color:var(--mute)}
+.cl-eps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cl-ep{text-decoration:none;color:var(--fg);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel-2);display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.cl-ep:hover,.cl-ep:focus-visible{border-color:var(--amber);transform:translateY(-3px)}
+.cl-ep .th{position:relative;display:block;aspect-ratio:16/9;background:#05070b}
+.cl-ep .img{position:absolute;inset:0;background:var(--im) center/cover no-repeat}
+.cl-ep .dur{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.78);padding:3px 7px;border-radius:6px;font-size:11px}
+.cl-ep .tt{padding:12px 14px 14px;display:flex;flex-direction:column;gap:7px}
+.cl-ep .tt b{font-weight:600;font-size:15px;line-height:1.32}
+.cl-ep .tt .mono{font-size:11px;color:var(--mute)}
+.cl-shorts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding-bottom:40px}
+.cl-shorts .short-card strong{font-size:16px}
+@media(max-width:760px){.cl-eps{grid-template-columns:1fr 1fr}.cl-shorts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:520px){.cl-eps{grid-template-columns:1fr}.cl-shorts{grid-template-columns:1fr 1fr}.cl-stats{gap:20px}.cl-stats b{font-size:30px}.client-btn b{font-size:19px}}
+@media(prefers-reduced-motion:reduce){.short-card:hover,.cl-ep:hover{transform:none}}
 </style>
 </head><body>
 
@@ -622,8 +667,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <div class="eyebrow mono" data-scr>Long form · YouTube</div>
         <h2 class="mask"><span>Stories that</span></h2><h2 class="mask"><span class="out">hold you.</span></h2>
       </div>
-      <p>Travel documentaries from 20 to 35 minutes, cut from hours of iPhone, GoPro and Insta360 footage. Real conversation kept, every cut covered with B-roll.</p>
+      <p>Travel documentaries from 15 to 45 minutes, cut from hours of iPhone, GoPro and Insta360 footage. Real conversation kept, every cut covered with B-roll. These are the most-watched.</p>
     </div>
+    <div class="client-cta" data-client-cta></div>
   </div>
   <div class="pin" id="pin">
     <div class="strip" id="strip"></div>
@@ -666,7 +712,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     </div>
   </div>
   <div class="stage" id="stage"><div class="ring" id="ring"></div></div>
-  <p class="shint mono">Five selected vertical edits · Open on YouTube ↗</p>
+  <div class="wrap"><p class="shint mono">The eight most-watched Shorts I edited · Open on YouTube ↗</p><div class="client-cta center" data-client-cta></div></div>
 </section>
 
 <!-- ===================== AI ===================== -->
@@ -888,23 +934,61 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 /* =====================================================================
    CONTENT · edit links here
    ===================================================================== */
+/* E-bike Explorers: every episode and Short I edited (views checked Nov 2026) */
+const CLIENT = {name:"E-bike Explorers", handle:"@E-bikeExplorers-ajdj", url:"https://www.youtube.com/@E-bikeExplorers-ajdj",
+  about:"Andy and Diane's e-bike travel channel. Since summer 2026 I edit their long episodes, Shorts and thumbnails: multicam iPhone, GoPro and Insta360 footage shaped into calm, story-driven travel films."};
+const EBX_LONG = [
+  {id:"twiKfhsgYgo", v:467, len:"22:29", place:"Utah · USA",          title:"Snow Canyon E-Bike Ride: Go Up then Down!"},
+  {id:"fc3qU_wCyTM", v:357, len:"22:22", place:"Utah · USA",          title:"We Rode E-Bikes Into Zion Right After the Flood"},
+  {id:"DSuwCPzlgRY", v:277, len:"42:47", place:"California · USA",    title:"Exploring Folsom by E-Bike: Lake Natoma & Historic Folsom"},
+  {id:"o9lzDkk600c", v:215, len:"28:06", place:"Idaho · Montana",     title:"We Biked the Route of the Hiawatha: Tunnels, Trestles & Darkness"},
+  {id:"vJwteI8sN0c", v:192, len:"22:15", place:"Utah · USA",          title:"Provo Canyon to Bridal Veil Falls, and a Night BYU Fans Won't Forget"},
+  {id:"mfarfEzX9Ac", v:191, len:"32:14", place:"Oregon · USA",        title:"We Tested Bend, Oregon: E-Bikes, Golf & $1,000,000 Homes"},
+  {id:"19t-n19qvrI", v:118, len:"35:45", place:"California · USA",    title:"Dream Ride in the Redwoods, But One Wrong Turn Cost Us 5 Hours"},
+  {id:"63M3pkniA6I", v:97,  len:"19:58", place:"Budapest · Hungary",  title:"We Explored Budapest by E-Bike"},
+  {id:"fxm25V5YWKQ", v:84,  len:"15:38", place:"Munich · Germany",    title:"We Let ChatGPT Plan Our Munich E-Bike Tour"}
+];
+const EBX_SHORTS = [
+  {id:"yFxnR23pLck", v:23000, ep:"Route of the Hiawatha", title:"Is That a Train in the Tunnel?!"},
+  {id:"Fr28636hie0", v:1770,  ep:"Munich",                title:"Germans Are Built Different"},
+  {id:"f0pY1qrXu4A", v:1700,  ep:"Redwoods",              title:"Don't Make This Fern Canyon Mistake!"},
+  {id:"3QF2DrBBMoM", v:1400,  ep:"Redwoods",              title:"The Best Road to E-Bike the Redwoods?"},
+  {id:"IQMZY3PbXdA", v:1200,  ep:"Redwoods",              title:"Would You Pay $500K to Live in a Tsunami Zone?"},
+  {id:"8cEXU8Hlb-s", v:1200,  ep:"Zion After the Flood",  title:"We've Never Seen the Virgin River This High"},
+  {id:"HMJQ17dloiI", v:1100,  ep:"Provo Canyon",          title:"4 Seconds Left: BYU vs Notre Dame Final Play"},
+  {id:"5q65kUVE7k4", v:1020,  ep:"Munich",                title:"It Could Happen to Any of Us"},
+  {id:"yjszjzb6_GE", v:1000,  ep:"Route of the Hiawatha", title:"Riding Into the Coldest, Darkest Tunnel"},
+  {id:"ggFSxtoabOA", v:918,   ep:"Zion After the Flood",  title:"Rolled Up to Zion's River and… Oh No"},
+  {id:"1B19BQcNIUA", v:591,   ep:"Bend, Oregon",          title:"This Is Not AI! It's Crater Lake"},
+  {id:"Dm9Pptm6wrg", v:489,   ep:"Budapest",              title:"Rubbing Budapest's Lucky Cop for Good Luck"},
+  {id:"I12-KBsGP3c", v:459,   ep:"Zion After the Flood",  title:"How Flooded Were Zion's Narrows?"},
+  {id:"n96CfgtNKqE", v:399,   ep:"Bend, Oregon",          title:"I Can't Believe Diane Rode This"},
+  {id:"f7JK6cRkojM", v:347,   ep:"Route of the Hiawatha", title:"The Tunnel Changed Our Clocks?!"},
+  {id:"ZUGDYrA8MlU", v:303,   ep:"Provo Canyon",          title:"E-Biking the Provo River Trail"},
+  {id:"qfpTnyUGwYg", v:290,   ep:"Budapest",              title:"Which Is Taller in Budapest?"},
+  {id:"rG3lJo9Qz0U", v:242,   ep:"Snow Canyon",           title:"Ranger Said It Was HUGE!"},
+  {id:"z9sAoIoe2MI", v:223,   ep:"Zion After the Flood",  title:"Angels Landing From an E-Bike"},
+  {id:"qA_7gy9Cy34", v:213,   ep:"Zion After the Flood",  title:"No Pedaling Required in Zion Canyon"},
+  {id:"xGD0pewssQ8", v:200,   ep:"Munich",                title:"River Surfing in the Middle of Munich"},
+  {id:"7Z24TXWs1YE", v:170,   ep:"Snow Canyon",           title:"Left or Right? To the Pioneer Names"},
+  {id:"iJHlMVQTsCw", v:119,   ep:"Zion After the Flood",  title:"Diane vs. the Zion Shuttle"},
+  {id:"d5TYxqvgyto", v:116,   ep:"Budapest",              title:"The Hidden Town Just Outside Budapest"},
+  {id:"BzfD0WVCZ6Q", v:112,   ep:"Munich",                title:"Off the Post! Munich Edition"},
+  {id:"fWqnAQ_KrPM", v:67,    ep:"Budapest",              title:"Where Every Road in Hungary Begins"},
+  {id:"RYFnYYWbGQU", v:59,    ep:"Bend, Oregon",          title:"A $1M House in Bend… With No Yard?!"}
+];
+/* Main page: the four most-watched episodes and the eight most-watched Shorts */
 const LONG = [
-  {id:"twiKfhsgYgo", t:185, title:"Snow Canyon", place:"Utah · USA", len:"20+ min",
+  {id:"twiKfhsgYgo", t:185, title:"Snow Canyon", place:"Utah · USA", len:"22 min",
    text:"Pioneer carvings, a famous film location and a surprise desert tortoise. A two-hour rough cut shaped into one story."},
-  {id:"DSuwCPzlgRY", t:440, title:"Lake Natoma", place:"Folsom · California", len:"Full episode",
+  {id:"fc3qU_wCyTM", t:0, title:"Zion After the Flood", place:"Utah · USA", len:"22 min",
+   text:"Riding into Zion right after a rare flood, from the swollen Virgin River to the Narrows. Real reactions kept, every cut covered with B-roll."},
+  {id:"DSuwCPzlgRY", t:440, title:"Lake Natoma", place:"Folsom · California", len:"42 min",
    text:"Chaptered route with an animated map, dual-mic dialogue repair and a grade built chapter by chapter."},
-  {id:"mfarfEzX9Ac", t:190, title:"Bend, Oregon", place:"Oregon · USA", len:"30+ min",
-   text:"River trails, golf and million-dollar homes in one long-form story, with Shorts cut from the master."},
-  {id:"19t-n19qvrI", t:8, title:"Fern Canyon", place:"Redwoods · California", len:"34 min",
-   text:"A wrong turn became the story arc. Natural pacing and B-roll covering every edit across five hours of trail."}
+  {id:"o9lzDkk600c", t:0, title:"Route of the Hiawatha", place:"Idaho · Montana", len:"28 min",
+   text:"Tunnels, trestles and total darkness. GoPro and Insta360 footage matched into one ride, with a Short from it passing 23K views."}
 ];
-const SHORTS = [
-  {id:"IQMZY3PbXdA", title:"$500K in a Tsunami Zone?"},
-  {id:"f0pY1qrXu4A", title:"The Fern Canyon Mistake"},
-  {id:"3QF2DrBBMoM", title:"Best E-Bike Road in the Redwoods"},
-  {id:"1B19BQcNIUA", title:"This Is Not AI: Crater Lake"},
-  {id:"n96CfgtNKqE", title:"I Can't Believe Diane Rode This"}
-];
+const SHORTS = EBX_SHORTS.slice(0,8);
 const AI = [
   {id:"1R7n6NZsQCbAVoAoPFmTueMFdm_tHhBTo", title:"The Last Goodbye", tags:"Story · Score · Grade", poster:"assets/images/last-goodbye.webp"},
   {id:"1UZm2RoN27rQhzETt0Uy9Wknk9bnlbAO3", title:"Cyberpunk Film", tags:"Action · Sound design · VFX", poster:"assets/images/cyberpunk.webp"},
@@ -916,9 +1000,12 @@ const SHOWREEL = {id:"1v2OB5_9U-lkft2P_VCnB2Ns1NYxLQBnZ", title:"Creative Portfo
 const PF_REEL  = {id:"", title:"Before / After", len:"0:45"};
 const FOLDERS = {thumbs:"1VXTXd_wB9wzjmzsPAOYqzmNzWXnx6GhD", ads:"1oohWSDTnGlMBvFIqxC4q2j-dgrFRjdYZ"};
 const THUMBNAILS = [
-  {id:"1vTY9_3uqdWkQ9805amjAERT4pFwIBTYW",title:"Budapest",image:"https://drive.google.com/thumbnail?id=1vTY9_3uqdWkQ9805amjAERT4pFwIBTYW&sz=w1000"},
-  {id:"1nyffVQFTKPazxSVUcDS-Y1ThYbXRJ-VA",title:"Should We Buy",image:"https://drive.google.com/thumbnail?id=1nyffVQFTKPazxSVUcDS-Y1ThYbXRJ-VA&sz=w1000"},
-  {id:"1qLZM2QLta8oRh2VsZBaULZlDCko8jzsO",title:"Zion",image:"https://drive.google.com/thumbnail?id=1qLZM2QLta8oRh2VsZBaULZlDCko8jzsO&sz=w1000"},
+  {id:"1qLZM2QLta8oRh2VsZBaULZlDCko8jzsO",title:"Zion After the Flood",image:"assets/thumbs/zion-after-the-flood.webp"},
+  {id:"1vTY9_3uqdWkQ9805amjAERT4pFwIBTYW",title:"Budapest",image:"assets/thumbs/budapest-which-is-taller.webp"},
+  {id:"1nyffVQFTKPazxSVUcDS-Y1ThYbXRJ-VA",title:"Should We Buy a House Here?",image:"assets/thumbs/should-we-buy-a-house-here.webp"},
+  {id:"19rtZwtojFrJAWyFL3OA5bc7Vh7m-MeNj",title:"Giant Flag · Part 2",image:"assets/thumbs/snow-canyon-giant-flag-part-2.webp"},
+  {id:"1NHBeLm_VbaWGG1VBoGBjyLGfWUdGRVYR",title:"Giant Flag · A",image:"assets/thumbs/snow-canyon-giant-flag-v1.webp"},
+  {id:"1JZSLw8Mx26mKM6ReRBwGm72EKxlwfPeP",title:"Giant Flag · B",image:"assets/thumbs/snow-canyon-giant-flag-v2.webp"},
   {id:"1gJP_ACoziSXOhU-OMMF-eqwY0bsZUZdP",title:"Escape Attempt",image:"assets/thumbs/escape-attempt.webp"},
   {id:"1zbBlXHETRbZasqQj2t5yod0plbfDnBp7",title:"First Boss",image:"assets/thumbs/first-boss.webp"},
   {id:"1brZ0L0m9HEr9g-b4MdKMEaYAfaLyOKeJ",title:"Giant Gate",image:"assets/thumbs/giant-gate.webp"},
@@ -931,6 +1018,11 @@ const THUMBNAILS = [
   {id:"1a-BxVMPSqdx6hTGneOSSD-edJtlzZnQw",title:"Unexpected Friendship",image:"assets/thumbs/unexpected-friendship.webp"}
 ];
 const ADS = [
+  {id:"1C5HZDi-V5_TXynClojTsjUKHzcGFyNiP",title:"SmashBurger",sub:"Reel Ad · Food",poster:"assets/ads/smashburger.webp"},
+  {id:"1GX7XFYaW-tRvbwgN1NDLpmgqBBJa_pvV",title:"Story First",sub:"Reel Ad · Brand Z promo",poster:"assets/ads/storyfirst.webp"},
+  {id:"1xykvxXPcxmunN-Kikr5F7fXhDngSfYsK",title:"KRYO Energy",sub:"Reel Ad · Beverage",poster:"assets/ads/kryo.webp"},
+  {id:"1-GFI6WtUmVGULkVE5QjMmPOErl_WcvHC",title:"ORVO ONE",sub:"Reel Ad · Headphones",poster:"assets/ads/orvo-one.webp"},
+  {id:"1DVqvFd4OFMnOp9WctrYshKrxF0aczjBZ",title:"VELLUNE",sub:"Reel Ad · Perfume",poster:"assets/ads/vellune.webp"},
   {id:"1tZbqoonnWOmGvdK4Kv8Z2pSrYE5HBAO7",title:"Meta Ad · 02",sub:"Paid Social · Commercial",poster:"assets/ads/meta-02.webp"},
   {id:"15GPibSxh9fcuxzbqD459LWl-vEXGieaP",title:"Meta Ad · 01",sub:"Paid Social · Commercial",poster:"assets/ads/meta-01.webp"},
   {id:"1nkyGVOk9a8-uGRQZ5Rd20RnwEKXefzjV",title:"Lawn Care · 01",sub:"Service Promotion",poster:"assets/ads/lawn-01.webp"},
@@ -958,38 +1050,38 @@ const CASES=[
   did:["Selected cinematic moments from creative editing work","Built transitions, graphics and motion with an intentional visual rhythm","Balanced sound, color and pacing for a unified viewing experience"],
   result:"Watch the creative portfolio film through its original Google Drive link."},
  {key:"snow",cats:["story","shorts"],title:"Snow Canyon",line:"A two-hour rough cut shaped into one story, with a surprise tortoise as the payoff.",
-  client:"US travel channel",format:"16:9 long-form + 3 Shorts",tools:"Resolve Studio, Fairlight",art:"land",seed:0,media:[{kind:"yt",id:"twiKfhsgYgo",t:185,label:"Watch on YouTube"}],
+  client:"E-bike Explorers",format:"16:9 long-form + 3 Shorts",tools:"Resolve Studio, Fairlight",art:"land",seed:0,media:[{kind:"yt",id:"twiKfhsgYgo",t:185,label:"Watch on YouTube"}],
   brief:"Turn an existing two-hour rough cut of an e-bike day in Snow Canyon State Park into a finished episode, plus vertical Shorts.",
   challenge:"Keep the search for pioneer carvings and a famous film location feeling natural, and let a desert tortoise encounter land as a real surprise rather than a staged moment.",
   did:["Worked on a duplicate of the client's timeline so the original stayed untouched","Rebuilt the story around the search, with the tortoise as the unplanned payoff","Calm, immersive pacing: complete conversations kept, cuts covered with B-roll","Color and audio finishing, then three vertical Shorts cut from the master"],
   result:"Delivered as a special episode alongside the regular monthly series."},
  {key:"natoma",cats:["story","shorts"],title:"Lake Natoma",line:"Four cameras, two voices on one file, and a house reveal at the end.",
-  client:"US travel channel",format:"16:9 long-form + 2 Shorts",tools:"Resolve Studio, Fairlight, Fusion",art:"land",seed:1,media:[{kind:"yt",id:"DSuwCPzlgRY",t:440,label:"Watch on YouTube"}],
+  client:"E-bike Explorers",format:"16:9 long-form + 2 Shorts",tools:"Resolve Studio, Fairlight, Fusion",art:"land",seed:1,media:[{kind:"yt",id:"DSuwCPzlgRY",t:440,label:"Watch on YouTube"}],
   brief:"A 12.3-mile loop around Lake Natoma ending in Historic Folsom, finished with a visit to a house for sale.",
   challenge:"39 clips from GoPro, iPhone and two Insta360 cameras. Both speakers sat on separate channels of one GoPro file, and the opening audio was weak.",
   did:["Split the two mic channels so each speaker plays centered and clean","AI voice isolation and dialogue leveling, with extra lift on the weak opening","A hook built from the house reveal, then back to the start of the ride","Animated route map through six stops","Grade built chapter by chapter: calm greens on the trail, more contrast at the dam, the warmest look for the house"],
   result:"Episode and Shorts delivered with a fully labeled project: color-coded by speaker, chapter and camera."},
  {key:"bend",cats:["story","shorts"],title:"Bend, Oregon",line:"One question holds a long episode together. The Shorts match the master frame for frame.",
-  client:"US travel channel",format:"16:9 4K + vertical Shorts",tools:"Resolve Studio, scripting",art:"land",seed:2,media:[{kind:"yt",id:"mfarfEzX9Ac",t:190,label:"Watch on YouTube"}],
+  client:"E-bike Explorers",format:"16:9 4K + vertical Shorts",tools:"Resolve Studio, scripting",art:"land",seed:2,media:[{kind:"yt",id:"mfarfEzX9Ac",t:190,label:"Watch on YouTube"}],
   brief:"Could they live in Bend? River trails, river sports, golf and the local housing market in one episode.",
   challenge:"Many topics need one clear thread, and every Short had to look and sound exactly like the approved master.",
   did:["Story built around a single question so each section answers part of it","Shorts assembled from the approved master timeline, with grades copied across","Vertical reframes inside platform safe zones, with hook, captions, subscribe button and a watch-the-full-video end card","4K H.265 exports checked file by file: duration, audio, black frames and loudness"],
   result:"A 4K episode plus Shorts that are consistent with it in color, sound and graphics."},
  {key:"fern",cats:["story"],title:"Fern Canyon",line:"A wrong turn added five hours. It became the story.",
-  client:"US travel channel",format:"16:9 · 34 min",tools:"Resolve Studio",art:"land",seed:3,media:[{kind:"yt",id:"19t-n19qvrI",t:8,label:"Watch on YouTube"}],
+  client:"E-bike Explorers",format:"16:9 · 34 min",tools:"Resolve Studio",art:"land",seed:3,media:[{kind:"yt",id:"19t-n19qvrI",t:8,label:"Watch on YouTube"}],
   brief:"A ride through Prairie Creek Redwoods: Fern Canyon, the Big Tree and Big Lagoon.",
   challenge:"A wrong turn stretched a short hike into five hours of footage.",
   did:["Used the detour as the story arc instead of cutting it out","Kept real reactions and complete thoughts, trimmed dead air and false starts","Forest B-roll covers the edits and gives the trail room to breathe","Different cameras balanced into one consistent look"],
   result:"A 34-minute episode that plays like a short adventure film."},
  {key:"snowreel",cats:["shorts","story"],title:"Snow Canyon · Instagram Reel",line:"The Snow Canyon episode recut as a vertical travel reel for Instagram.",
-  client:"US travel channel",format:"9:16 · Instagram Reel",tools:"DaVinci Resolve",art:"land",seed:4,
+  client:"E-bike Explorers",format:"9:16 · Instagram Reel",tools:"DaVinci Resolve",art:"land",seed:4,
   media:[{kind:"drive",id:"1x0gDaldhuj0E1_kzvN1EwCAETEksRKeQ",label:"Watch the reel"}],
   brief:"Turn a long-form desert ride into a short vertical piece that works on its own in the Instagram feed.",
   challenge:"Widescreen action-camera footage had to read clearly on a phone screen without losing the scenery.",
   did:["Picked the strongest moments from the finished episode","Reframed 16:9 shots for 9:16 with a soft background fill","Cut to a fast, music-led rhythm for social viewing"],
   result:"A vertical reel that sends viewers back to the full episode."},
  {key:"folsomreel",cats:["shorts","story"],title:"Folsom · Instagram Reel",line:"The Lake Natoma ride condensed into a vertical reel for Instagram.",
-  client:"US travel channel",format:"9:16 · Instagram Reel",tools:"DaVinci Resolve",art:"land",seed:5,
+  client:"E-bike Explorers",format:"9:16 · Instagram Reel",tools:"DaVinci Resolve",art:"land",seed:5,
   media:[{kind:"drive",id:"1KdtB6_I5NfBTxfQwo8diJnhwQIDXTZPh",label:"Watch the reel"}],
   brief:"Give the Folsom episode a short vertical version for Instagram.",
   challenge:"Keep the lake, the trail and the river views readable after reframing wide footage to a tall frame.",
@@ -1370,8 +1462,14 @@ strip.innerHTML=LONG.map((v,i)=>`
 $$('#strip .img').forEach((el,i)=>bgImg(el,yt(LONG[i].id)));
 
 const ring=$('#ring');
-ring.innerHTML=SHORTS.map((v,i)=>`<a class="short-link" href="https://www.youtube.com/shorts/${v.id}" target="_blank" rel="noopener noreferrer" aria-label="Watch short: ${v.title}">
-  <span class="mono">SHORT ${String(i+1).padStart(2,'0')} / 05</span><strong>${v.title}</strong><span class="short-open">▶ Watch Short ↗</span></a>`).join('');
+const fmtV=n=>n>=1000?(n/1000).toFixed(n>=10000?0:1).replace(/\.0$/,'')+'K':String(n);
+const shortCard=(v,n)=>`<a class="short-card" href="https://www.youtube.com/shorts/${v.id}" target="_blank" rel="noopener noreferrer" aria-label="Watch short: ${v.title}">
+  <span class="img" data-short="${v.id}"></span>
+  <span class="top mono"><span>${n?'SHORT '+String(n).padStart(2,'0'):v.ep}</span><span class="views">${fmtV(v.v)} views</span></span>
+  <span class="bot"><strong>${v.title}</strong><span class="ep mono">${n?v.ep+' · ':''}Watch ↗</span></span></a>`;
+const hydrateShorts=root=>root.querySelectorAll('[data-short]').forEach(el=>{ const id=el.dataset.short; bgImg(el,[`https://i.ytimg.com/vi/${id}/oardefault.jpg`,`https://i.ytimg.com/vi/${id}/hq720.jpg`,`https://i.ytimg.com/vi/${id}/hqdefault.jpg`]); });
+ring.innerHTML=SHORTS.map((v,i)=>shortCard(v,i+1)).join(''); hydrateShorts(ring);
+$$('[data-client-cta]').forEach(el=>{ el.innerHTML=`<button class="client-btn" type="button" data-client data-cur="OPEN"><span class="mono">Client</span><b>${CLIENT.name}</b><small>All ${EBX_LONG.length} episodes &amp; ${EBX_SHORTS.length} Shorts →</small></button>`; });
 $('#aigrid').innerHTML=AI.map((v,i)=>`
   <button class="aicard" type="button" data-cur="PLAY" data-open="drive" data-id="${v.id}" data-title="${v.title}" aria-label="Play ${v.title}">
     <canvas data-art="neon" data-seed="${i}"></canvas><span class="img"></span>
@@ -1452,7 +1550,7 @@ function openCase(i){
     <div class="ctop"><span class="mono">Case ${String(i+1).padStart(2,'0')} / ${String(CASES.length).padStart(2,'0')}</span><button type="button" id="cClose" aria-label="Close case">✕</button></div>
     <div class="cmedia"><canvas data-art="${c.art}" data-seed="${c.seed}"></canvas><span class="img"></span><div class="cplay">${btns}</div></div>
     <div class="chead"><span class="ccats">${c.cats.map(k=>`<span>${catName(k)}</span>`).join('')}</span><h2>${c.title}</h2><p style="color:var(--mute);font-size:18px;max-width:56ch">${c.line}</p></div>
-    <div class="facts"><div><span class="mono">Project type</span><b>${c.client}</b></div><div><span class="mono">Format</span><b>${c.format}</b></div><div><span class="mono">Tools</span><b>${c.tools}</b></div></div>
+    <div class="facts"><div><span class="mono">${c.client===CLIENT.name?'Client':'Project type'}</span><b>${c.client===CLIENT.name?`<button class="cl-link" type="button" data-client>${c.client} →</button>`:c.client}</b></div><div><span class="mono">Format</span><b>${c.format}</b></div><div><span class="mono">Tools</span><b>${c.tools}</b></div></div>
     <div class="csec"><span class="mono">The brief</span><p>${c.brief}</p></div>
     <div class="csec"><span class="mono">The challenge</span><p>${c.challenge}</p></div>
     <div class="csec"><span class="mono">What I did</span><ul>${c.did.map(d=>`<li>${d}</li>`).join('')}</ul></div>
@@ -1470,6 +1568,28 @@ function openCase(i){
 function closeCase(){ const box=$('#case'); if(box.hidden) return; box.classList.remove('open'); SFX.whoosh(true); document.body.classList.remove('locked');
   setTimeout(()=>{ box.hidden=true; },reduce?0:700); }
 $('#case').addEventListener('click',e=>{ if(e.target.id==='case') closeCase(); });
+function openClient(){
+  const box=$('#case'), pan=$('#cpanel');
+  const eps=[...EBX_LONG].sort((a,b)=>b.v-a.v), sh=[...EBX_SHORTS].sort((a,b)=>b.v-a.v);
+  const total=eps.reduce((a,v)=>a+v.v,0)+sh.reduce((a,v)=>a+v.v,0);
+  pan.innerHTML=`
+    <div class="ctop"><span class="mono">Client · YouTube channel</span><button type="button" id="cClose" aria-label="Close client page">✕</button></div>
+    <div class="cl-hero"><span class="mono amb">${CLIENT.handle}</span><h2>${CLIENT.name}</h2><p>${CLIENT.about}</p>
+      <div class="cl-stats"><div><b>${eps.length}</b><span class="mono">Long episodes</span></div><div><b>${sh.length}</b><span class="mono">Shorts</span></div><div><b>${fmtV(total)}+</b><span class="mono">Views on my edits</span></div></div>
+      <a class="btn ghost" href="${CLIENT.url}" target="_blank" rel="noopener noreferrer">Visit the channel ↗</a></div>
+    <div class="cl-h"><h3>Long episodes</h3><span class="mono">Most watched first</span></div>
+    <div class="cl-eps">${eps.map(v=>`<a class="cl-ep" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${v.title}">
+      <span class="th"><span class="img" data-ep="${v.id}"></span><span class="dur mono">${v.len}</span></span>
+      <span class="tt"><b>${v.title}</b><span class="mono">${v.place} · ${fmtV(v.v)} views</span></span></a>`).join('')}</div>
+    <div class="cl-h"><h3>Shorts</h3><span class="mono">Most watched first</span></div>
+    <div class="cl-shorts">${sh.map(v=>shortCard(v,0)).join('')}</div>`;
+  pan.querySelectorAll('[data-ep]').forEach(el=>bgImg(el,yt(el.dataset.ep))); hydrateShorts(pan);
+  if(box.hidden){ box.hidden=false; void box.offsetWidth; box.classList.add('open'); document.body.classList.add('locked'); SFX.whoosh(); }
+  else SFX.shutter();
+  pan.scrollTop=0; $('#cClose').addEventListener('click',closeCase);
+  setTimeout(()=>$('#cClose').focus({preventScroll:true}),80);
+}
+document.addEventListener('click',e=>{ if(e.target.closest('[data-client]')){ e.preventDefault(); openClient(); } });
 
 /* =====================================================================
    LIGHTBOX

@@ -106,3 +106,7 @@ Drag anywhere across the comparison image using a mouse or finger to reveal the 
 ### RGB waveform / parade (v15)
 
 The Color Grading section includes a three-channel RGB parade below the LOG-style / GRADED comparison. It uses locally generated WebP parade images sourced from the same grading footage to display reliably on GitHub Pages, file:// local previews, iPhones and desktops without requiring cross-origin canvas pixel reads. Sliding the main control adjusts the visual split in the RGB parade as well. This is a color scope, not an audio waveform.
+
+## Client page
+
+The **E-bike Explorers** button (Long form and Shorts sections, and inside related case files) opens a client page with every episode and Short I edited for the channel, most watched first. Edit the lists in `EBX_LONG` and `EBX_SHORTS` in `index.html`.
